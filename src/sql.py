@@ -41,7 +41,6 @@ engine = create_async_engine(
 async_session = sessionmaker(
     engine, expire_on_commit=False, class_=AsyncSession)
 
-
 class Users(Base):
     __tablename__ = "users"
     id = Column(INTEGER, primary_key=True)
@@ -58,6 +57,8 @@ class Tokens(Base):
     token = Column(VARCHAR(256))
 
 
+Users.metadata.create_all(engine)
+Tokens.metadata.create_all(engine)
 object_list = []
 
 
