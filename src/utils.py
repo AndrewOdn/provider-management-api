@@ -45,7 +45,7 @@ async def add_new_refresh(username: str, user_id: int) -> Dict:
         REFRESH_SECRET,
         algorithm="HS256",
     )
-    await async_add_token({'user_id': user_id, 'token': token})
+    await async_add_token({'user_id': str(user_id), 'token': token})
     return token
 
 
