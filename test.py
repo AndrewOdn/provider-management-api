@@ -41,7 +41,7 @@ session = sa.orm.Session(
 
 class Users(Base):
     __tablename__ = "users"
-    id = Column(INTEGER, primary_key=True)
+    id = Column(INTEGER, primary_key=True, autoincrement=True)
     rule_level = Column(SMALLINT, default=1)
     username = Column(VARCHAR(24), primary_key=True)
     password = Column(VARCHAR(256))
@@ -50,7 +50,7 @@ class Users(Base):
 
 class Tokens(Base):
     __tablename__ = "tokens"
-    id = Column(INTEGER, primary_key=True)
+    id = Column(INTEGER, primary_key=True, autoincrement=True)
     user_id = Column(VARCHAR(24))
     token = Column(VARCHAR(256))
 
