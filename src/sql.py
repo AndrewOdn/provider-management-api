@@ -46,7 +46,7 @@ class Users(Base):
     id = Column(INTEGER, primary_key=True)
     rule_level = Column(SMALLINT, default=1)
     username = Column(VARCHAR(24), primary_key=True)
-    password = Column(VARCHAR(24))
+    password = Column(VARCHAR(256))
     activated = Column(SMALLINT, default=0)
 
 
