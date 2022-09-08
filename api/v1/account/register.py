@@ -7,19 +7,19 @@ from src.schemas.account import register_200, register_401, register_data, Accou
 from src.schemas.base import base401, base500, base_header
 from falcon import Request, Response
 from spectree import Response as resp
-from src.sql import Users, async_session, Stone, dict_transform
+from src.sql import Users, async_session, dict_transform
 from sqlalchemy.future import select
 import sqlalchemy as sa
 
-async def test(name):
-    async with async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                select(Stone))
-            for a in result.scalars():
-                j_data = await dict_transform(a.__dict__)
-                logging.info(str(j_data))
-    return False
+# async def test(name):
+#     async with async_session() as session:
+#         async with session.begin():
+#             result = await session.execute(
+#                 select(Stone))
+#             for a in result.scalars():
+#                 j_data = await dict_transform(a.__dict__)
+#                 logging.info(str(j_data))
+#     return False
 
 
 async def async_check_users(name):
