@@ -21,7 +21,7 @@ async def async_check_user_tokens(name, token, id):
     async with async_session() as session:
         async with session.begin():
             result_one = await session.execute(
-                select(Tokens).where(Tokens.user_id == str(id)).where(Tokens.token == token))
+                select(Tokens).where(Tokens.user_id == id).where(Tokens.token == token))
             result_two = await session.execute(
                 select(Users).where(Users.username == name).where(Users.id == id))
             for a1 in result_one.scalars():

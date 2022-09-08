@@ -53,7 +53,7 @@ class Users(Base):
 class Tokens(Base):
     __tablename__ = "tokens"
     id = Column(INTEGER, primary_key=True, autoincrement=True)
-    user_id = Column(VARCHAR(24))
+    user_id = Column(INTEGER)
     token = Column(VARCHAR(256))
 
 
