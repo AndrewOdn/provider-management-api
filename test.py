@@ -21,18 +21,23 @@ DB_TEST_USER = 'admin'
 DB_TEST_PASS = '2001'
 
 DB_LOCAL_HOST = 'localhost'
-DB_LOCAL_PORT = 3306
-DB_LOCAL_NAME = 'marketplace_new'
+DB_LOCAL_PORT = 5432
+DB_LOCAL_NAME = 'provider_api'
 DB_LOCAL_USER = 'admin'
 DB_LOCAL_PASS = '2001'
 
-engine = create_async_engine(
-    f"postgresql+psycopg2://{DB_TEST_USER}:"
-    f"{DB_TEST_PASS}@{DB_TEST_HOST}:"
-    f"{DB_TEST_PORT}/{DB_TEST_NAME}"
+engine = sa.create_engine(
+    f"postgresql+psycopg2://{DB_LOCAL_USER}:"
+    f"{DB_LOCAL_PASS}@{DB_LOCAL_HOST}:"
+    f"{DB_LOCAL_PORT}/{DB_LOCAL_NAME}"
 )
-async_session = sessionmaker(
-    engine, expire_on_commit=False, class_=AsyncSession)
+session = sa.orm.Session(
+    bind=engine,
+    autoflush=True,
+    autocommit=False,
+    expire_on_commit=True,
+    info=None,
+)
 
 class Users(Base):
     __tablename__ = "users"
