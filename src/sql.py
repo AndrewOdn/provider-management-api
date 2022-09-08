@@ -27,11 +27,11 @@ DB_TEST_NAME = 'provider_api'
 DB_TEST_USER = 'admin'
 DB_TEST_PASS = '2001'
 
-DB_LOCAL_HOST = 'localhost'
-DB_LOCAL_PORT = 3306
-DB_LOCAL_NAME = 'marketplace_new'
-DB_LOCAL_USER = 'admin'
-DB_LOCAL_PASS = '2001'
+DB_TEST_HOST = 'localhost'
+DB_TEST_PORT = 5432
+DB_TEST_NAME = 'provider_api'
+DB_TEST_USER = 'admin'
+DB_TEST_PASS = '2001'
 
 engine = create_async_engine(
     f"postgresql+asyncpg://{DB_TEST_USER}:"
@@ -57,8 +57,6 @@ class Tokens(Base):
     token = Column(VARCHAR(256))
 
 
-Users.metadata.create_all(engine)
-Tokens.metadata.create_all(engine)
 object_list = []
 
 
