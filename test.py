@@ -20,7 +20,7 @@ DB_TEST_NAME = 'provider_api'
 DB_TEST_USER = 'admin'
 DB_TEST_PASS = '2001'
 
-DB_LOCAL_HOST = 'localhost'
+DB_LOCAL_HOST = '2.59.41.170'
 DB_LOCAL_PORT = 5432
 DB_LOCAL_NAME = 'provider_api'
 DB_LOCAL_USER = 'admin'
