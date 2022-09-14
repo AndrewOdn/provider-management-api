@@ -57,6 +57,7 @@ async def async_get_product(filters, user_id):
                                       "quantity": offer.quantity,
                                       "user_id": offer.user_id,
                                       "updated": str(offer.updated)},
+                            "photo": a.photo,
                             "code": a.code,
                             "updated": str(a.updated),
                         })
@@ -72,6 +73,7 @@ async def async_get_product(filters, user_id):
                                     "emoji": a.country.emoji,
                                     "id": a.country.id,
                                     "name": a.country.name},
+                        "photo": a.photo,
                         "code": a.code,
                         "updated": str(a.updated),
                     })

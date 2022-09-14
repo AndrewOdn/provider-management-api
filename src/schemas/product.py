@@ -60,6 +60,7 @@ class product_element(BaseModel):
     name: str
     offer: Optional[product_element_first]
     country: product_country
+    photo:str
     code: str
     updated: constr(regex=
                     r"202\d{1}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) ([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$")

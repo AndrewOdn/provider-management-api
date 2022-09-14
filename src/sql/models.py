@@ -24,6 +24,7 @@ class Product(Base):
     country = Column(VARCHAR(80), nullable=True, default=None)
     code = Column(VARCHAR(80), nullable=True, default=None)
     country_id = Column(VARCHAR(36), ForeignKey("countries.id"), nullable=True, default=None)
+    photo = Column(VARCHAR(255), nullable=True, default=None)
     updated = Column(
         DateTime(timezone=True),
         server_default=func.now(),
