@@ -26,8 +26,8 @@ async def async_check_user_tokens(name, token, id):
             result_two = await session.execute(
                 select(User).where(User.username == name).where(User.id == id)
             )
-            for a1 in result_one.scalars():
-                for a2 in result_two.scalars():
+            for a1 in result_one.scalars().unique():
+                for a2 in result_two.scalars().unique():
                     return True
     return False
 
@@ -46,14 +46,17 @@ class Refresh:
         data = await req.get_media()
         refresh_token = data["refreshToken"]
         refresh_token_data = await token_is_valid(refresh_token, REFRESH_SECRET)
-        username = refresh_token_data["username"]
-        user_id = refresh_token_data["user_id"]
-        user = await async_check_user_tokens(username, refresh_token, user_id)
-        if not user:
+        if refresh_token_data:
+            username = refresh_token_data["username"]
+            user_id = refresh_token_data["user_id"]
+            user = await async_check_user_tokens(username, refresh_token, user_id)
+            if not user:
+                raise falcon.HTTPUnauthorized("Нет такого пользователя или неверный токен")
+            access = await get_new_access(username, user_id)
+            refresh = await add_new_refresh(username, user_id)
+            res.media = {"accessToken": access, "refreshToken": refresh}
+        else:
             raise falcon.HTTPUnauthorized("Нет такого пользователя или неверный токен")
-        access = await get_new_access(username, user_id)
-        refresh = await add_new_refresh(username, user_id)
-        res.media = {"accessToken": access, "refreshToken": refresh}
 
 
 route = Refresh()

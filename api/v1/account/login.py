@@ -20,7 +20,7 @@ async def async_check_users(name):
     async with async_session() as session:
         async with session.begin():
             result = await session.execute(select(User).where(User.username == name))
-            for a in result.scalars():
+            for a in result.scalars().unique():
                 return {
                     "id": a.id,
                     "password": a.password,

@@ -30,7 +30,8 @@ router = FalconRouter(
                 },
                 "product": {
                     "get_products": True,
-                    "get_products_by_user": True
+                    "get_products_by_user": True,
+                    "update_offer":True
                 }
             }
         }
