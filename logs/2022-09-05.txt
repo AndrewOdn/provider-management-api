@@ -1,0 +1,578 @@
+[2022-09-05 13:31:57:INFO] uvicorn.error - (server.py).serve(75) - Started server process [10912]
+[2022-09-05 13:31:57:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 13:31:57:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 13:31:57:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 13:33:02:INFO] uvicorn.error - (server.py).serve(75) - Started server process [20584]
+[2022-09-05 13:33:02:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 13:33:02:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 13:33:02:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 13:34:41:INFO] uvicorn.error - (server.py).serve(75) - Started server process [15780]
+[2022-09-05 13:34:41:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 13:34:41:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 13:34:41:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 13:35:31:INFO] uvicorn.error - (server.py).serve(75) - Started server process [21368]
+[2022-09-05 13:35:31:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 13:35:31:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 13:35:31:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 13:56:32:INFO] uvicorn.error - (server.py).serve(75) - Started server process [15280]
+[2022-09-05 13:56:32:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 13:56:32:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 13:56:32:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 13:56:56:INFO] uvicorn.error - (server.py).serve(75) - Started server process [14528]
+[2022-09-05 13:56:56:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 13:56:56:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 13:56:56:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:02:27:INFO] uvicorn.error - (server.py).serve(75) - Started server process [8832]
+[2022-09-05 14:02:27:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:02:27:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:02:27:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:03:04:INFO] uvicorn.error - (server.py).serve(75) - Started server process [18284]
+[2022-09-05 14:03:04:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:03:04:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:03:04:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:11:40:INFO] uvicorn.error - (server.py).serve(75) - Started server process [12132]
+[2022-09-05 14:11:40:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:11:40:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:11:40:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:13:29:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:19:17:INFO] uvicorn.error - (server.py).serve(75) - Started server process [11092]
+[2022-09-05 14:19:17:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:19:17:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:19:17:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:20:51:INFO] uvicorn.error - (server.py).serve(75) - Started server process [2236]
+[2022-09-05 14:20:51:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:20:51:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:20:51:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:20:53:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:22:46:INFO] uvicorn.error - (server.py).serve(75) - Started server process [1456]
+[2022-09-05 14:22:46:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:22:46:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:22:46:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:23:04:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:24:10:INFO] uvicorn.error - (server.py).serve(75) - Started server process [18780]
+[2022-09-05 14:24:10:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:24:10:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:24:10:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:24:23:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:24:48:INFO] uvicorn.error - (server.py).serve(75) - Started server process [10832]
+[2022-09-05 14:24:48:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:24:48:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:24:48:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:24:52:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:24:54:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:24:56:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:24:58:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 264, in request_validation
+    req.context.headers = headers.parse_obj(req.headers)
+AttributeError: 'dict' object has no attribute 'headers'
+[2022-09-05 14:33:01:INFO] uvicorn.error - (server.py).serve(75) - Started server process [19720]
+[2022-09-05 14:33:01:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:33:01:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:33:01:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:33:47:INFO] uvicorn.error - (server.py).serve(75) - Started server process [4060]
+[2022-09-05 14:33:47:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:33:47:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:33:47:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:35:17:INFO] uvicorn.error - (server.py).serve(75) - Started server process [20456]
+[2022-09-05 14:35:17:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:35:17:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:35:17:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:35:35:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 36, in on_get
+    out = await async_get_warehouses()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 24, in async_get_warehouses
+    return {'id': a.id, 'password': a.password, 'rule_level': a.rule_level, 'activated': a.activated}
+AttributeError: 'Warehouse' object has no attribute 'password'
+[2022-09-05 14:41:55:INFO] uvicorn.error - (server.py).serve(75) - Started server process [12292]
+[2022-09-05 14:41:55:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:41:55:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:41:55:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:42:03:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 36, in on_get
+    out = await async_get_warehouses()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 25, in async_get_warehouses
+    out.append({'id': a.id, 'moysklad_id': a.moysklad_id, 'name': a.name, 'priority': a.priority, "type":a.type})
+AttributeError: 'dict' object has no attribute 'append'
+[2022-09-05 14:43:11:INFO] uvicorn.error - (server.py).serve(75) - Started server process [7324]
+[2022-09-05 14:43:11:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:43:11:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:43:11:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:43:12:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 36, in on_get
+    out = await async_get_warehouses()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 25, in async_get_warehouses
+    out.append({'id': a.id, 'moysklad_id': a.moysklad_id, 'name': a.name, 'priority': a.priority, "type":a.type})
+AttributeError: 'dict' object has no attribute 'append'
+[2022-09-05 14:51:38:INFO] uvicorn.error - (server.py).serve(75) - Started server process [19316]
+[2022-09-05 14:51:38:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:51:38:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:51:38:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:51:43:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 36, in on_get
+    out = await async_get_warehouses()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\warehouse\get.py", line 25, in async_get_warehouses
+    out.append({'id': a.id, 'moysklad_id': a.moysklad_id, 'name': a.name, 'priority': a.priority, "type":a.type})
+AttributeError: 'dict' object has no attribute 'append'
+[2022-09-05 14:52:17:INFO] uvicorn.error - (server.py).serve(75) - Started server process [11536]
+[2022-09-05 14:52:17:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:52:17:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:52:17:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 14:52:20:ERROR] spectree.utils - (utils.py).default_after_handler(211) - 500 Response Validation Error: base401 - [{'loc': ('__root__',), 'msg': 'base401 expected dict not list', 'type': 'type_error'}]
+[2022-09-05 14:52:53:INFO] uvicorn.error - (server.py).serve(75) - Started server process [9728]
+[2022-09-05 14:52:53:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 14:52:53:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 14:52:53:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:00:25:INFO] uvicorn.error - (server.py).serve(75) - Started server process [21364]
+[2022-09-05 15:00:25:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:00:25:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:00:25:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:00:27:ERROR] spectree.utils - (utils.py).default_after_handler(211) - 500 Response Validation Error: base401 - [{'loc': ('__root__',), 'msg': 'base401 expected dict not list', 'type': 'type_error'}]
+[2022-09-05 15:01:01:INFO] uvicorn.error - (server.py).serve(75) - Started server process [21268]
+[2022-09-05 15:01:01:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:01:01:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:01:01:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:01:04:ERROR] spectree.utils - (utils.py).default_after_handler(211) - 500 Response Validation Error: get_200 - [{'loc': ('__root__', 0, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}, {'loc': ('__root__', 1, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}, {'loc': ('__root__', 3, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}, {'loc': ('__root__', 4, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}, {'loc': ('__root__', 6, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}, {'loc': ('__root__', 7, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}, {'loc': ('__root__', 8, 'virtual_moysklad_id'), 'msg': 'none is not an allowed value', 'type': 'type_error.none.not_allowed'}]
+[2022-09-05 15:04:48:INFO] uvicorn.error - (server.py).serve(75) - Started server process [2172]
+[2022-09-05 15:04:48:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:04:48:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:04:48:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:14:54:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 97, in execute
+    return self.await_(self._execute_async(operation, parameters))
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 68, in await_only
+    return current.driver.switch(awaitable)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 121, in greenlet_spawn
+    value = await result
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 109, in _execute_async
+    result = await self._cursor.execute(operation, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 239, in execute
+    await self._query(query)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 457, in _query
+    await conn.query(q)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 672, in _read_query_result
+    await result.read()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 1153, in read
+    first_packet = await self.connection._read_packet()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 641, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'tokens.username' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\account\refresh.py", line 44, in on_post
+    user = await async_check_user_tokens(username, refresh_token, user_id)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\account\refresh.py", line 23, in async_check_user_tokens
+    result_one = await session.execute(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 215, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 126, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1712, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 333, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\compat.py", line 208, in raise_
+    raise exception
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 97, in execute
+    return self.await_(self._execute_async(operation, parameters))
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 68, in await_only
+    return current.driver.switch(awaitable)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 121, in greenlet_spawn
+    value = await result
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 109, in _execute_async
+    result = await self._cursor.execute(operation, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 239, in execute
+    await self._query(query)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 457, in _query
+    await conn.query(q)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 672, in _read_query_result
+    await result.read()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 1153, in read
+    first_packet = await self.connection._read_packet()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 641, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'tokens.username' in 'field list'")
+[SQL: SELECT tokens.id, tokens.username, tokens.token 
+FROM tokens 
+WHERE tokens.username = %s AND tokens.token = %s]
+[parameters: ('andrewkaroadto6500', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFuZHJld2thcm9hZHRvNjUwMCIsInVzZXJfaWQiOjMsImNyZWF0ZWQiOjE2NjE1MDA5MjA1MTF9.EMi3jLkU-hd4N-Y8SMeE_i7W6Qya66MtVz8-rTCPi0E')]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-09-05 15:15:04:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 97, in execute
+    return self.await_(self._execute_async(operation, parameters))
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 68, in await_only
+    return current.driver.switch(awaitable)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 121, in greenlet_spawn
+    value = await result
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 109, in _execute_async
+    result = await self._cursor.execute(operation, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 239, in execute
+    await self._query(query)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 457, in _query
+    await conn.query(q)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 672, in _read_query_result
+    await result.read()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 1153, in read
+    first_packet = await self.connection._read_packet()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 641, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'username' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\account\login.py", line 47, in on_post
+    refresh = await add_new_refresh(username, user["id"])
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\src\utils.py", line 48, in add_new_refresh
+    await async_add_token({'username': username, 'token': token})
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\src\utils.py", line 30, in async_add_token
+    await session.execute(sa.insert(Tokens).values(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 215, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 126, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1712, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 333, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\compat.py", line 208, in raise_
+    raise exception
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 97, in execute
+    return self.await_(self._execute_async(operation, parameters))
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 68, in await_only
+    return current.driver.switch(awaitable)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 121, in greenlet_spawn
+    value = await result
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 109, in _execute_async
+    result = await self._cursor.execute(operation, parameters)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 239, in execute
+    await self._query(query)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\cursors.py", line 457, in _query
+    await conn.query(q)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 672, in _read_query_result
+    await result.read()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 1153, in read
+    first_packet = await self.connection._read_packet()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\aiomysql\connection.py", line 641, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'username' in 'field list'")
+[SQL: INSERT INTO tokens (username, token) VALUES (%s, %s)]
+[parameters: ('andrewkaroadto6500', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFuZHJld2thcm9hZHRvNjUwMCIsInVzZXJfaWQiOjMsImNyZWF0ZWQiOjE2NjIzODAxMDQ5MzZ9.MReZHgTC1h-VudHzfuROxDTk2hKklW1gE9KbjJmL-8Q')]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-09-05 15:45:29:INFO] uvicorn.error - (server.py).serve(75) - Started server process [516]
+[2022-09-05 15:45:29:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:45:29:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:45:29:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:45:33:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\account\login.py", line 47, in on_post
+    refresh = await add_new_refresh(username, user["id"])
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\src\utils.py", line 48, in add_new_refresh
+    await async_add_token({'username': username, 'token': token})
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\src\utils.py", line 30, in async_add_token
+    await session.execute(sa.insert(Tokens).values(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 215, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 115, in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1712, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 333, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1564, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 531, in _compile_w_cache
+    compiled_sql = self._compiler(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 566, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 790, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 463, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 498, in process
+    return obj._compiler_dispatch(self, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 82, in _compiler_dispatch
+    return meth(self, **kw)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 3875, in visit_insert
+    crud_params = crud._get_crud_params(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\sqlalchemy\sql\crud.py", line 169, in _get_crud_params
+    raise exc.CompileError(
+sqlalchemy.exc.CompileError: Unconsumed column names: username
+[2022-09-05 15:47:35:INFO] uvicorn.error - (server.py).serve(75) - Started server process [18464]
+[2022-09-05 15:47:35:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:47:35:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:47:35:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:47:43:INFO] uvicorn.error - (server.py).serve(75) - Started server process [17436]
+[2022-09-05 15:47:43:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:47:43:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:47:43:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 15:51:06:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 180, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 311, in validate
+    await func(*args, **kwargs)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\account\refresh.py", line 44, in on_post
+    user = await async_check_user_tokens(username, refresh_token, user_id)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\api\v1\account\refresh.py", line 24, in async_check_user_tokens
+    select(Tokens).where(Tokens.username == name).where(Tokens.token == token))
+AttributeError: type object 'Tokens' has no attribute 'username'
+[2022-09-05 15:51:44:INFO] uvicorn.error - (server.py).serve(75) - Started server process [21108]
+[2022-09-05 15:51:44:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 15:51:44:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 15:51:44:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 16:11:17:INFO] uvicorn.error - (server.py).serve(75) - Started server process [11540]
+[2022-09-05 16:11:17:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 16:11:17:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 16:11:17:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 16:12:33:INFO] uvicorn.error - (server.py).serve(75) - Started server process [14348]
+[2022-09-05 16:12:33:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 16:12:33:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 16:12:33:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 16:35:33:INFO] uvicorn.error - (server.py).serve(75) - Started server process [11432]
+[2022-09-05 16:35:33:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 16:35:33:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 16:35:33:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 16:44:13:INFO] uvicorn.error - (server.py).serve(75) - Started server process [20632]
+[2022-09-05 16:44:13:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 16:44:13:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 16:44:13:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 16:57:59:INFO] uvicorn.error - (server.py).serve(75) - Started server process [4168]
+[2022-09-05 16:57:59:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 16:57:59:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 16:57:59:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 16:58:21:INFO] uvicorn.error - (server.py).serve(75) - Started server process [16112]
+[2022-09-05 16:58:21:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 16:58:21:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 16:58:21:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 17:05:20:INFO] uvicorn.error - (server.py).serve(75) - Started server process [20796]
+[2022-09-05 17:05:20:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 17:05:20:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 17:05:20:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 18:05:05:INFO] uvicorn.error - (server.py).serve(75) - Started server process [20868]
+[2022-09-05 18:05:05:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 18:05:05:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 18:05:05:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 23:30:48:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 183, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 269, in request_validation
+    media = await req.get_media()
+AttributeError: 'Login' object has no attribute 'get_media'
+[2022-09-05 23:30:50:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 183, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 269, in request_validation
+    media = await req.get_media()
+AttributeError: 'Login' object has no attribute 'get_media'
+[2022-09-05 23:31:29:INFO] uvicorn.error - (server.py).serve(75) - Started server process [13684]
+[2022-09-05 23:31:29:INFO] uvicorn.error - (on.py).startup(47) - Waiting for application startup.
+[2022-09-05 23:31:29:INFO] uvicorn.error - (on.py).startup(61) - Application startup complete.
+[2022-09-05 23:31:29:INFO] uvicorn.error - (server.py)._log_started_message(207) - Uvicorn running on http://localhost:4005 (Press CTRL+C to quit)
+[2022-09-05 23:31:30:ERROR] falcon - (app.py)._python_error_handler(1047) - [FALCON] Unhandled exception in ASGI app
+Traceback (most recent call last):
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\falcon\asgi\app.py", line 406, in __call__
+    await responder(req, resp, **params)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\spec.py", line 183, in async_validate
+    return await self.backend.validate(
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 295, in validate
+    await self.request_validation(_req, query, json, headers, cookies)
+  File "C:\Users\sukhanova\PycharmProjects\marketplace-management-api\venv\lib\site-packages\spectree\plugins\falcon_plugin.py", line 269, in request_validation
+    media = await req.get_media()
+AttributeError: 'Login' object has no attribute 'get_media'

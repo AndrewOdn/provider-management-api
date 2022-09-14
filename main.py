@@ -3,6 +3,7 @@ import pathlib
 from datetime import datetime
 
 import uvicorn
+
 from config import HOST, PORT
 from src.middleware import AuthMiddleware, CorsMiddleware
 from src.utils import api
@@ -27,6 +28,10 @@ router = FalconRouter(
                     "refresh": True,
                     # "me": True,
                 },
+                "product": {
+                    "get_products": True,
+                    "get_products_by_user": True
+                }
             }
         }
     },
@@ -35,7 +40,8 @@ router = FalconRouter(
         AuthMiddleware(),
         CorsMiddleware(),
     ],
-    cors_enable=True, api=api
+    cors_enable=True,
+    api=api,
 )
 
 if __name__ == "__main__":

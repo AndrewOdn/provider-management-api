@@ -13,7 +13,7 @@ class FalconRouter:
         add_trailing_slash: bool = False,
         api: bool = False,
         **kwargs,
-    ):
+    ) -> object:
         self.app = self._create_app(app_type, **kwargs)
         self.app.req_options.strip_url_path_trailing_slash = add_trailing_slash
         self._route_groups = route_groups

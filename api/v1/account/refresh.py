@@ -2,28 +2,30 @@ import logging
 
 import bcrypt
 import falcon
+import sqlalchemy as sa
 from falcon import Request, Response
 from falcon.media.validators import jsonschema
-from src.sql import Users, Tokens
-from src.utils import add_new_refresh, get_new_access, api
-from src.schemas.account import refresh_200, refresh_data, refresh_401, Account_tag
-from src.schemas.base import base401, base500, base_header
-from falcon import Request, Response
 from spectree import Response as resp
-from src.sql import Users, async_session
 from sqlalchemy.future import select
-import sqlalchemy as sa
+
 from config import REFRESH_SECRET
-from src.utils import add_new_refresh, get_new_access, token_is_valid
+from src.schemas.account import (Account_tag, refresh_200, refresh_401,
+                                 refresh_data)
+from src.schemas.base import base401, base500, base_header
+from src.sql.models import User, Token
+from src.sql.connection import async_session
+from src.utils import add_new_refresh, api, get_new_access, token_is_valid
 
 
 async def async_check_user_tokens(name, token, id):
     async with async_session() as session:
         async with session.begin():
             result_one = await session.execute(
-                select(Tokens).where(Tokens.user_id == id).where(Tokens.token == token))
+                select(Token).where(Token.user_id == id).where(Token.token == token)
+            )
             result_two = await session.execute(
-                select(Users).where(Users.username == name).where(Users.id == id))
+                select(User).where(User.username == name).where(User.id == id)
+            )
             for a1 in result_one.scalars():
                 for a2 in result_two.scalars():
                     return True
@@ -32,7 +34,9 @@ async def async_check_user_tokens(name, token, id):
 
 class Refresh:
     @api.validate(
-        json=refresh_data, resp=resp(HTTP_200=refresh_200, HTTP_401=refresh_401, HTTP_500=base500), tags=[Account_tag],
+        json=refresh_data,
+        resp=resp(HTTP_200=refresh_200, HTTP_401=refresh_401, HTTP_500=base500),
+        tags=[Account_tag],
     )
     async def on_post(self, req: Request, res: Response):
         """

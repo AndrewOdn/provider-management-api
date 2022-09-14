@@ -1,13 +1,15 @@
-from falcon import Response, Request
+import logging
+
+import falcon
+from falcon import Request, Response
+from spectree.plugins.falcon_plugin import DocPageAsgi, OpenAPIAsgi
+
 from api.v1.account.login import Login
 from api.v1.account.refresh import Refresh
 from api.v1.account.register import Register
-from spectree.plugins.falcon_plugin import DocPageAsgi, OpenAPIAsgi
-import logging
-import falcon
+from config import ACCESS_SECRET, TOKEN_NAME
 
 from .utils import token_is_valid
-from config import ACCESS_SECRET, TOKEN_NAME
 
 
 class AuthMiddleware:

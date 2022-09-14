@@ -2,31 +2,32 @@ import logging
 
 import bcrypt
 import falcon
+import sqlalchemy as sa
 from falcon import Request, Response
 from falcon.media.validators import jsonschema
-from src.sql import Users
-from src.utils import add_new_refresh, get_new_access
-from src.utils import api
-from src.schemas.account import me_200, me_data, Account_tag
-from falcon import Request, Response
 from spectree import Response as resp
-from src.sql import Users, async_session, dict_transform, Stone
 from sqlalchemy.future import select
-import sqlalchemy as sa
+
+from src.schemas.account import Account_tag, me_200, me_data
+from src.sql.models import User
+from src.sql.connection import async_session
+from src.utils import add_new_refresh, api, get_new_access
+
 
 async def async_get_users(name):
     async with async_session() as session:
         async with session.begin():
-            result = await session.execute(
-                select(Users).where(Users.username == name))
+            result = await session.execute(select(User).where(User.username == name))
             for a in result.scalars():
-                return {'username': a.username}
+                return {"username": a.username}
     return False
 
 
 class Me:
     @api.validate(
-        resp=resp(HTTP_200=me_200), tags=[Account_tag],deprecated=True,
+        resp=resp(HTTP_200=me_200),
+        tags=[Account_tag],
+        deprecated=True,
     )
     async def on_get(self, req: Request, res: Response):
         """

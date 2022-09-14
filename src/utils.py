@@ -6,11 +6,7 @@ from typing import Dict
 import jwt
 from spectree import SpecTree
 
-from config import (
-    TIKEN_LIFE_IN_SECONDS,
-    ACCESS_SECRET,
-    REFRESH_SECRET,
-)
+from config import ACCESS_SECRET, REFRESH_SECRET, TIKEN_LIFE_IN_SECONDS
 
 API_TOKEN = "<api_token>"
 api = SpecTree(
@@ -19,17 +15,16 @@ api = SpecTree(
     version="0.0.1",
 )
 
-from src.sql import Tokens, async_session
-from sqlalchemy.future import select
 import sqlalchemy as sa
+
+from .sql.models import Token
+from .sql.connection import async_session
 
 
 async def async_add_token(data):
     async with async_session() as session:
         async with session.begin():
-            await session.execute(sa.insert(Tokens).values(
-                data)
-            )
+            await session.execute(sa.insert(Token).values(data))
             await session.commit()
     return False
 
@@ -45,7 +40,7 @@ async def add_new_refresh(username: str, user_id: int) -> Dict:
         REFRESH_SECRET,
         algorithm="HS256",
     )
-    await async_add_token({'user_id': user_id, 'token': token})
+    await async_add_token({"user_id": user_id, "token": token})
     return token
 
 
