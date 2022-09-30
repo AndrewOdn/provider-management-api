@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field, constr
 from spectree import Tag
-from typing import List, Literal, Optional, Dict
+from typing import List, Literal, Optional, Dict, Union
 from datetime import datetime
 
 Product_tag = Tag(name="Product", description="ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ")
@@ -82,7 +82,7 @@ class get_data_product_by_user(BaseModel):
 
 
 class update_offer_200(BaseModel):
-    status: bool
+    status: Union[bool, str]
 
 
 class update_data_offer(BaseModel):
