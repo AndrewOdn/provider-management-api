@@ -27,9 +27,7 @@ async def async_update_product(filters, user_id):
                                                                              quantity=filters['quantity'],
                                                                              product_id=product_id))
                 except Exception:
-                    return {
-                        "status": "Нет такого товара в каталоге"
-                    }
+                    falcon.HTTP_406({"status": "Нет такого товара в каталоге"})
                 if upd.rowcount == 0:
                     await session.execute(
                         insert(Offer).values(price=filters['price'], quantity=filters['quantity'],
