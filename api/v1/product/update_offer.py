@@ -21,10 +21,15 @@ async def async_update_product(filters, user_id):
         async with session.begin():
             product_id = filters['product_id']
             if filters['price'] != 0 or filters['quantity'] != 0:
-                upd = await session.execute(
-                    update(Offer).where(Offer.user_id == user_id).values(price=filters['price'],
-                                                                         quantity=filters['quantity'],
-                                                                         product_id=product_id))
+                try:
+                    upd = await session.execute(
+                        update(Offer).where(Offer.user_id == user_id).values(price=filters['price'],
+                                                                             quantity=filters['quantity'],
+                                                                             product_id=product_id))
+                except Exception:
+                    return {
+                        "status": "Нет такого товара в каталоге"
+                    }
                 if upd.rowcount == 0:
                     await session.execute(
                         insert(Offer).values(price=filters['price'], quantity=filters['quantity'],
@@ -34,7 +39,7 @@ async def async_update_product(filters, user_id):
                 await session.execute(
                     delete(Offer).where(Offer.user_id == user_id).where(Offer.product_id == product_id))
                 await session.commit()
-    return {"status":True}
+    return {"status": True}
 
 
 class Update:
