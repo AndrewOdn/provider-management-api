@@ -51,8 +51,6 @@ async def async_get_product(filters, user_id):
                 result = await session.execute(query)
 
                 for a in result:
-                    logging.info(f"{a}")
-                    logging.info(f"{a[12]} == {user_id}")
                     #if a[12] == user_id:
                     out.append(
                         {
@@ -103,7 +101,6 @@ async def async_get_product(filters, user_id):
                 result = await session.execute(query)
 
                 for a in result:
-                    logging.info(f"{a}")
                     out.append(
                         {
                             "id": a[0],

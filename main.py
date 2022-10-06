@@ -16,7 +16,6 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 from src.custom_router import FalconRouter
-
 router = FalconRouter(
     "asgi",
     route_groups={
@@ -30,7 +29,7 @@ router = FalconRouter(
                 },
                 "product": {
                     "get_products": True,
-                    "get_products_by_user": True,
+                    # "get_products_by_user": True,
                     "update_offer":True
                 }
             }
@@ -44,6 +43,7 @@ router = FalconRouter(
     cors_enable=True,
     api=api,
 )
+
 
 if __name__ == "__main__":
     uvicorn.run(router.app, host=HOST, port=PORT, log_level="info")
