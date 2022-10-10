@@ -25,13 +25,14 @@ async def async_get_product(filters, user_id):
             out = []
             if users_only:
                 query = (
-                    f"SELECT DISTINCT products.id AS id, products.article AS article, products.barcode AS barcode, "
-                    f"products.name AS name, countries.code AS country_code, countries.emoji AS country_emoji,"
-                    f"countries.id AS country_id,countries.name AS country_name, offers.id AS offer_id, offers.price AS "
-                    f"offer_price, offers.product_id AS offer_product_id,offers.quantity AS offer_quantity,"
-                    f"offers.user_id AS offer_user_id, offers.updated AS offer_updated, products.photo AS photo,"
-                    f"products.code AS code, products.updated AS updated FROM offers JOIN products ON "
-                    f"offers.product_id = products.id JOIN countries ON products.country_id = countries.id"
+                    f"""SELECT products.id AS id, products.article AS article, products.barcode AS barcode, 
+products.name AS name, countries.code AS country_code, countries.emoji AS country_emoji,
+countries.id AS country_id,countries.name AS country_name, offers.id AS offer_id, offers.price AS 
+offer_price, offers.product_id AS offer_product_id,offers.quantity AS offer_quantity,
+offers.user_id AS offer_user_id, offers.updated AS offer_updated, products.photo AS photo,
+products.code AS code, products.updated AS updated FROM products
+LEFT OUTER JOIN offers ON offers.product_id = products.id AND user_id = {user_id}
+LEFT OUTER JOIN countries ON countries.id = products.country_id"""
                 )
                 prefix = " WHERE "
                 if filters:
@@ -47,12 +48,12 @@ async def async_get_product(filters, user_id):
                     if "code" in filters:
                         query += prefix + f"products.code = '{filters['code']}'"
                         prefix = " AND "
-                    query += prefix + f"offers.user_id = '{user_id}'"
+
                 result = await session.execute(query)
 
                 for a in result:
-                    #if a[12] == user_id:
-                    out.append(
+                    # if a[12] == user_id:
+                    temp = (
                         {
                             "id": a[0],
                             "article": a[1],
@@ -64,19 +65,21 @@ async def async_get_product(filters, user_id):
                                 "id": a[6],
                                 "name": a[7],
                             },
-                            "offer": {
-                                "id": a[8],
-                                "price": float(a[9]),
-                                "product_id": a[10],
-                                "quantity": a[11],
-                                "user_id": a[12],
-                                "updated": str(a[13]),
-                            },
                             "photo": a[14],
                             "code": a[15],
                             "updated": str(a[16]),
                         }
                     )
+                    if a[13] and a[9]:
+                        temp['offer'] = {
+                            "id": a[8],
+                            "price": float(a[9]) if a[9] else None,
+                            "product_id": a[10],
+                            "quantity": a[11],
+                            "user_id": a[12],
+                            "updated": str(a[13]) if a[13] else None,
+                        }
+                    out.append(temp)
             else:
                 query = (
                     f"SELECT DISTINCT products.id AS id, products.article AS article, products.barcode AS barcode, "
