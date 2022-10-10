@@ -18,9 +18,9 @@ from src.sql.on_sql_func import dict_transform
 async def async_get_product(filters, user_id):
     async with async_session() as session:
         async with session.begin():
-            users_only = False
-            if "user_offers_only" in filters and filters['user_offers_only'] == 'true':
-                users_only = True
+            users_only = True
+            if "user_offers_only" in filters and filters['user_offers_only'] is bool:
+                users_only = filters['user_offers_only']
 
             out = []
             if users_only:
