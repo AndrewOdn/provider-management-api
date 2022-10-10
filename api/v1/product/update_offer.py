@@ -16,17 +16,17 @@ from sqlalchemy import insert, update, delete
 from src.sql.on_sql_func import dict_transform
 
 
-async def async_update_product(filters, user_id):
+async def async_update_product(filt, user_id):
     async with async_session() as session:
-        async with session.begin():
+        session.begin()
+        for filters in filt:
             product_id = filters['product_id']
             if filters['price'] != 0 or filters['quantity'] != 0:
                 try:
                     upd = await session.execute(
-                        update(Offer).where(Offer.user_id == user_id).values(price=filters['price'],
-                                                                             quantity=filters['quantity'],
-                                                                             product_id=product_id))
-                except Exception:
+                        f"""UPDATE offers SET price = {filters['price']}, quantity = {filters['quantity']}
+WHERE offers.product_id = '{product_id}' AND user_id = {user_id}""")
+                except Exception as exp:
                     raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
                 if upd.rowcount == 0:
                     await session.execute(
