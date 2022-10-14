@@ -21,6 +21,14 @@ async def async_update_product(filt, user_id):
         session.begin()
         for filters in filt:
             product_id = filters['product_id']
+            try:
+                filters['price'] = float(filters['price'])
+            except:
+                filters['price'] = 0
+            try:
+                filters['quantity'] = float(filters['quantity'])
+            except:
+                filters['quantity'] = 0
             if filters['price'] is None or filters['price'] == '' or filters['price'] == "None":
                 filters['price'] = 0
             if filters['quantity'] is None or filters['quantity'] == '' or filters['quantity'] == "None":
