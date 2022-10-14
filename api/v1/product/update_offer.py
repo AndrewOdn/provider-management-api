@@ -41,9 +41,12 @@ WHERE offers.product_id = '{product_id}' AND user_id = {user_id}""")
                 except Exception as exp:
                     raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
                 if upd.rowcount == 0:
-                    await session.execute(
-                        insert(Offer).values(price=filters['price'], quantity=filters['quantity'],
-                                             product_id=product_id, user_id=user_id))
+                    try:
+                        await session.execute(
+                            insert(Offer).values(price=filters['price'], quantity=filters['quantity'],
+                                                 product_id=product_id, user_id=user_id))
+                    except Exception as exp:
+                        raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
                 await session.commit()
             else:
                 await session.execute(
