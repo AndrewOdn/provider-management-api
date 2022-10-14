@@ -87,8 +87,8 @@ class update_offer_200(BaseModel):
 
 class update_data_offer2(BaseModel):
     product_id: str
-    price: float
-    quantity: int
+    price: Union[float, str] = None
+    quantity: Union[int, str] = None
 
 
 class update_data_offer(BaseModel):
