@@ -66,6 +66,8 @@ class Update:
         """
         data = await req.get_media()
         logging.debug("Reached on_post() in Login")
+        if data == []:
+            res.media = {"status": False}
         out = await async_update_product(data, req.context.get("user_id"))
         res.media = out
 
