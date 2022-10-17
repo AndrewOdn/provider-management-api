@@ -29,7 +29,7 @@ async def async_get_product(filters, user_id):
 products.name AS name, countries.code AS country_code, countries.emoji AS country_emoji,
 countries.id AS country_id,countries.name AS country_name, offers.id AS offer_id, offers.price AS 
 offer_price, offers.product_id AS offer_product_id,offers.quantity AS offer_quantity,
-offers.user_id AS offer_user_id, offers.updated AS offer_updated, products.photo AS photo,
+offers.user_id AS offer_user_id, offers.updated AS offer_updated,
 products.code AS code, products.updated AS updated FROM products
 LEFT OUTER JOIN offers ON offers.product_id = products.id AND user_id = {user_id}
 LEFT OUTER JOIN countries ON countries.id = products.country_id"""
@@ -65,9 +65,8 @@ LEFT OUTER JOIN countries ON countries.id = products.country_id"""
                                 "id": a[6],
                                 "name": a[7],
                             },
-                            "photo": a[14],
-                            "code": a[15],
-                            "updated": str(a[16]),
+                            "code": a[14],
+                            "updated": str(a[15]),
                         }
                     )
                     if a[13] and a[9]:
@@ -84,7 +83,7 @@ LEFT OUTER JOIN countries ON countries.id = products.country_id"""
                 query = (
                     f"SELECT DISTINCT products.id AS id, products.article AS article, products.barcode AS barcode, "
                     f"products.name AS name, countries.code AS country_code, countries.emoji AS country_emoji,"
-                    f"countries.id AS country_id,countries.name AS country_name, products.photo AS photo,"
+                    f"countries.id AS country_id,countries.name AS country_name,"
                     f"products.code AS code, products.updated AS updated FROM products "
                     f"JOIN countries ON products.country_id = countries.id"
                 )
@@ -116,9 +115,8 @@ LEFT OUTER JOIN countries ON countries.id = products.country_id"""
                                 "id": a[6],
                                 "name": a[7],
                             },
-                            "photo": a[8],
-                            "code": a[9],
-                            "updated": str(a[10]),
+                            "code": a[8],
+                            "updated": str(a[9]),
                         }
                     )
     return out
