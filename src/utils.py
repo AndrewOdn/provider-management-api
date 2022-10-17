@@ -17,8 +17,8 @@ api = SpecTree(
 
 import sqlalchemy as sa
 
-from .sql.models import Token
 from .sql.connection import async_session
+from .sql.models import Token
 
 
 async def async_add_token(data):

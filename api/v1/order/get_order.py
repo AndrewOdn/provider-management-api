@@ -4,14 +4,14 @@ import bcrypt
 import falcon
 from falcon import Request, Response
 from falcon.media.validators import jsonschema
-from src.sql.models import Product
-from src.utils import add_new_refresh, get_new_access, api
-from src.schemas.product import get_product_200, get_data_product, Product_tag
-from src.schemas.base import base401, base500, base_header
-from falcon import Request, Response
 from spectree import Response as resp
-from src.sql.connection import async_session
 from sqlalchemy.future import select
+
+from src.schemas.base import base401, base500, base_header
+from src.schemas.product import Product_tag, get_data_product, get_product_200
+from src.sql.connection import async_session
+from src.sql.models import Product
+from src.utils import add_new_refresh, api, get_new_access
 
 
 async def async_get_order(filters):
@@ -22,34 +22,43 @@ async def async_get_order(filters):
             query_country = True
             query_code = True
             if filters:
-                if 'id' in filters:
-                    query_id = Product.id == filters['id']
-                if 'article' in filters:
-                    query_article = Product.article == filters['article']
-                if 'country' in filters:
-                    query_country = Product.country == filters['country']
-                if 'code' in filters:
-                    query_code = Product.code == filters['code']
+                if "id" in filters:
+                    query_id = Product.id == filters["id"]
+                if "article" in filters:
+                    query_article = Product.article == filters["article"]
+                if "country" in filters:
+                    query_country = Product.country == filters["country"]
+                if "code" in filters:
+                    query_code = Product.code == filters["code"]
             result = await session.execute(
-                select(Product).where(query_id).where(query_article).where(query_country).where(query_code))
+                select(Product)
+                .where(query_id)
+                .where(query_article)
+                .where(query_country)
+                .where(query_code)
+            )
             out = []
             for a in result.scalars():
-                out.append({
-                    "id":a.id,
-                    "article":a.article,
-                    "barcode":a.barcode,
-                    "name":a.name,
-                    "country":a.country,
-                    "code":a.code,
-                    "updated":str(a.updated),
-                })
+                out.append(
+                    {
+                        "id": a.id,
+                        "article": a.article,
+                        "barcode": a.barcode,
+                        "name": a.name,
+                        "country": a.country,
+                        "code": a.code,
+                        "updated": str(a.updated),
+                    }
+                )
     return out
 
 
 class Get:
     @api.validate(
-        json=get_data_product, resp=resp(HTTP_200=get_product_200, HTTP_401=base401, HTTP_500=base500),
-        tags=[Product_tag], headers=base_header,
+        json=get_data_product,
+        resp=resp(HTTP_200=get_product_200, HTTP_401=base401, HTTP_500=base500),
+        tags=[Product_tag],
+        headers=base_header,
     )
     async def on_post(self, req: Request, res: Response):
         """

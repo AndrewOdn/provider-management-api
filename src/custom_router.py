@@ -1,3 +1,6 @@
+"""
+Custom router class declaration
+"""
 import importlib
 from typing import Dict, List, Union
 
@@ -6,13 +9,15 @@ from falcon.asgi import App as AApp
 
 
 class FalconRouter:
+    """Custom router"""
+
     def __init__(
-        self,
-        app_type: str = "asgi",
-        route_groups: Union[Dict, None, str] = None,
-        add_trailing_slash: bool = False,
-        api: bool = False,
-        **kwargs,
+            self,
+            app_type: str = "asgi",
+            route_groups: Union[Dict, None, str] = None,
+            add_trailing_slash: bool = False,
+            api: bool = False,
+            **kwargs,
     ) -> object:
         self.app = self._create_app(app_type, **kwargs)
         self.app.req_options.strip_url_path_trailing_slash = add_trailing_slash
@@ -22,18 +27,21 @@ class FalconRouter:
 
     @staticmethod
     def parse_branch(routes: Dict) -> List[str]:
+        """
+        Parsing route_groups json
+        """
         not_check = [key for key in routes.keys()]
         result = []
         for key in not_check:
             value = routes[key]
-            if type(value) is dict:
+            if isinstance(value, dict):
                 for ckey in value.keys():
                     nkey = key + "." + ckey
                     not_check.append(nkey)
                     routes[nkey] = value[ckey]
-            elif value == True:
+            elif value is True:
                 result.append(key)
-            elif type(value) is list:
+            elif isinstance(value, list):
                 result += [key + "." + ckey for ckey in value]
         return result
 

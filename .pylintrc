@@ -1,0 +1,2 @@
+[MASTER]
+disable=consider-using-f-string,too-few-public-methods,import-error, no-name-in-module, unnecessary-comprehension

@@ -9,11 +9,10 @@ from spectree import Response as resp
 from sqlalchemy.future import select
 
 from config import REFRESH_SECRET
-from src.schemas.account import (Account_tag, refresh_200, refresh_401,
-                                 refresh_data)
+from src.schemas.account import Account_tag, refresh_200, refresh_401, refresh_data
 from src.schemas.base import base401, base500, base_header
-from src.sql.models import User, Token
 from src.sql.connection import async_session
+from src.sql.models import Token, User
 from src.utils import add_new_refresh, api, get_new_access, token_is_valid
 
 
@@ -51,7 +50,9 @@ class Refresh:
             user_id = refresh_token_data["user_id"]
             user = await async_check_user_tokens(username, refresh_token, user_id)
             if not user:
-                raise falcon.HTTPUnauthorized("Нет такого пользователя или неверный токен")
+                raise falcon.HTTPUnauthorized(
+                    "Нет такого пользователя или неверный токен"
+                )
             access = await get_new_access(username, user_id)
             refresh = await add_new_refresh(username, user_id)
             res.media = {"accessToken": access, "refreshToken": refresh}

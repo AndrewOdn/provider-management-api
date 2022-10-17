@@ -22,10 +22,16 @@ PartnerSegment = Table(
     "partners_segments",
     Base.metadata,
     Column(
-        "partner_id", Integer(), ForeignKey("partners.id", ondelete="CASCADE"), primary_key=True
+        "partner_id",
+        Integer(),
+        ForeignKey("partners.id", ondelete="CASCADE"),
+        primary_key=True,
     ),
     Column(
-        "segment_id", Integer(), ForeignKey("segments.id", ondelete="CASCADE"), primary_key=True
+        "segment_id",
+        Integer(),
+        ForeignKey("segments.id", ondelete="CASCADE"),
+        primary_key=True,
     ),
     PrimaryKeyConstraint("partner_id", "segment_id", name="p_partner_id_segment_id"),
 )
@@ -41,10 +47,16 @@ class Product(Base):
     barcode = Column(VARCHAR(50), nullable=True, default=None)
     name = Column(VARCHAR(255), nullable=True, default=None)
     code = Column(VARCHAR(80), nullable=True, default=None)
-    country_id = Column(VARCHAR(36), ForeignKey("countries.id"), nullable=True, default=None)
+    country_id = Column(
+        VARCHAR(36), ForeignKey("countries.id"), nullable=True, default=None
+    )
     brand_id = Column(Integer(), ForeignKey("brands.id"), nullable=True, default=None)
-    category_id = Column(Integer(), ForeignKey("categories.id"), nullable=True, default=None)
-    segment_id = Column(Integer(), ForeignKey("segments.id"), nullable=True, default=None)
+    category_id = Column(
+        Integer(), ForeignKey("categories.id"), nullable=True, default=None
+    )
+    segment_id = Column(
+        Integer(), ForeignKey("segments.id"), nullable=True, default=None
+    )
     updated = Column(
         DateTime(timezone=True),
         server_default=func.now(),
@@ -65,7 +77,9 @@ class ProductTask(Base):
     uuid = Column(VARCHAR(255), nullable=True, default=None)
     article = Column(VARCHAR(50), nullable=True, default=None)
     name = Column(VARCHAR(255), nullable=True, default=None)
-    partner_id = Column(Integer(), ForeignKey("partners.id"), nullable=True, default=None)
+    partner_id = Column(
+        Integer(), ForeignKey("partners.id"), nullable=True, default=None
+    )
 
     partner = relationship("Partner")
 
@@ -145,8 +159,12 @@ class Offer(Base):
     __tablename__ = "offers"
 
     id = Column(Integer(), primary_key=True)
-    product_id = Column(VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), nullable=False)
-    user_id = Column(Integer(), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    product_id = Column(
+        VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), nullable=False
+    )
+    user_id = Column(
+        Integer(), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
     price = Column(Numeric(15, 6), nullable=True, default=None)
     quantity = Column(Integer(), nullable=True, default=None)
     updated = Column(

@@ -8,11 +8,10 @@ from falcon import Request, Response
 from spectree import Response as resp
 from sqlalchemy.future import select
 
-from src.schemas.account import (Account_tag, register_200, register_401,
-                                 register_data)
+from src.schemas.account import Account_tag, register_200, register_401, register_data
 from src.schemas.base import base401, base500, base_header
-from src.sql.models import User
 from src.sql.connection import async_session
+from src.sql.models import User
 from src.utils import api
 
 # async def test(name):

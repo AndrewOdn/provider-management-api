@@ -9,10 +9,15 @@ from spectree import Response as resp
 from sqlalchemy.future import select
 
 from src.schemas.account import (
-    Account_tag, login_200, login_401, login_data, refresh_200)
+    Account_tag,
+    login_200,
+    login_401,
+    login_data,
+    refresh_200,
+)
 from src.schemas.base import base401, base500, base_header
-from src.sql.models import User
 from src.sql.connection import async_session
+from src.sql.models import User
 from src.utils import add_new_refresh, api, get_new_access
 
 

@@ -1,5 +1,7 @@
+"""
+Middleware classes declaration
+"""
 import logging
-
 import falcon
 from falcon import Request, Response
 from spectree.plugins.falcon_plugin import DocPageAsgi, OpenAPIAsgi
@@ -9,10 +11,13 @@ from api.v1.account.refresh import Refresh
 from api.v1.account.register import Register
 from config import ACCESS_SECRET, TOKEN_NAME
 
-from .utils import token_is_valid
+from src.utils import token_is_valid
 
 
 class AuthMiddleware:
+    """
+    Authentication middleware by JWT token
+    """
     async def process_startup(self, scope, event):
         pass
 

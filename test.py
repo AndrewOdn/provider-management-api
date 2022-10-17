@@ -1,5 +1,7 @@
 import sqlalchemy as sa
+
 from src.sql.models import Base
+
 DB_TEST_HOST = "localhost"
 DB_TEST_PORT = 5432
 DB_TEST_NAME = "provider_api"

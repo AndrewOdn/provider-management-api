@@ -1,3 +1,6 @@
+"""
+Server's run file
+"""
 import logging
 import pathlib
 from datetime import datetime
@@ -5,6 +8,7 @@ from datetime import datetime
 import uvicorn
 
 from config import HOST, PORT
+from src.custom_router import FalconRouter
 from src.middleware import AuthMiddleware, CorsMiddleware
 from src.utils import api
 
@@ -12,10 +16,10 @@ pathlib.Path("logs").mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     filename="logs/%s.txt" % datetime.today().strftime("%Y-%m-%d"),
     level=logging.INFO,
-    format="[%(asctime)s:%(levelname)s] %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s",
+    format="[%(asctime)s:%(levelname)s] %(name)s - "
+    "(%(filename)s).%(funcName)s(%(lineno)d) - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
-from src.custom_router import FalconRouter
 router = FalconRouter(
     "asgi",
     route_groups={
@@ -30,8 +34,8 @@ router = FalconRouter(
                 "product": {
                     "get_products": True,
                     # "get_products_by_user": True,
-                    "update_offer":True
-                }
+                    "update_offer": True,
+                },
             }
         }
     },

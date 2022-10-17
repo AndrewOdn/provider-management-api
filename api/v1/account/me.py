@@ -9,8 +9,8 @@ from spectree import Response as resp
 from sqlalchemy.future import select
 
 from src.schemas.account import Account_tag, me_200, me_data
-from src.sql.models import User
 from src.sql.connection import async_session
+from src.sql.models import User
 from src.utils import add_new_refresh, api, get_new_access
 
 
