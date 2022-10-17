@@ -1,51 +1,50 @@
+"""
+api/v1/account/login route
+"""
 import logging
-
 import bcrypt
 import falcon
-import sqlalchemy as sa
 from falcon import Request, Response
-from falcon.media.validators import jsonschema
 from spectree import Response as resp
 from sqlalchemy.future import select
 
 from src.schemas.account import (
     Account_tag,
-    login_200,
-    login_401,
-    login_data,
-    refresh_200,
+    Login200,
+    Login401,
+    LoginData,
 )
-from src.schemas.base import base401, base500, base_header
+from src.schemas.base import Base500
 from src.sql.connection import async_session
 from src.sql.models import User
 from src.utils import add_new_refresh, api, get_new_access
 
 
 async def async_check_users(name):
+    """Get user information func"""
     async with async_session() as session:
         async with session.begin():
             result = await session.execute(select(User).where(User.username == name))
-            for a in result.scalars().unique():
+            for item in result.scalars().unique():
                 return {
-                    "id": a.id,
-                    "password": a.password,
-                    "rule_level": a.rule_level,
-                    "activated": a.activated,
+                    "id": item.id,
+                    "password": item.password,
+                    "rule_level": item.rule_level,
+                    "activated": item.activated,
                 }
 
     return False
 
 
 class Login:
+    """Login route"""
     @api.validate(
-        json=login_data,
-        resp=resp(HTTP_200=login_200, HTTP_401=login_401, HTTP_500=base500),
+        json=LoginData,
+        resp=resp(HTTP_200=Login200, HTTP_401=Login401, HTTP_500=Base500),
         tags=[Account_tag],
     )
     async def on_post(self, req: Request, res: Response):
-        """
-        Логин
-        """
+        """Login"""
         logging.debug("Reached on_post() in Login")
         data = await req.get_media()
         username = data["username"].lower()

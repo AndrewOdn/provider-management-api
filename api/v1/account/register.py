@@ -1,4 +1,7 @@
-import logging
+"""
+api/v1/account/register route
+"""
+
 from typing import Dict
 
 import bcrypt
@@ -8,8 +11,8 @@ from falcon import Request, Response
 from spectree import Response as resp
 from sqlalchemy.future import select
 
-from src.schemas.account import Account_tag, register_200, register_401, register_data
-from src.schemas.base import base401, base500, base_header
+from src.schemas.account import Account_tag, Register200, Register401, RegisterData
+from src.schemas.base import Base500
 from src.sql.connection import async_session
 from src.sql.models import User
 from src.utils import api
@@ -26,16 +29,17 @@ from src.utils import api
 
 
 async def async_check_users(name):
+    """Check information func"""
     async with async_session() as session:
         async with session.begin():
             result = await session.execute(select(User).where(User.username == name))
-            for a in result.scalars():
-                # logging.info(str(a.__dict__))
+            for item in result.scalars():
                 return True
     return False
 
 
 async def async_insert_user(user_data):
+    """Add new user func"""
     async with async_session() as session:
         async with session.begin():
             await session.execute(sa.insert(User).values(user_data))
@@ -44,14 +48,15 @@ async def async_insert_user(user_data):
 
 
 class Register:
+    """Register route"""
     @api.validate(
-        json=register_data,
-        resp=resp(HTTP_200=register_200, HTTP_401=register_401, HTTP_500=base500),
+        json=RegisterData,
+        resp=resp(HTTP_200=Register200, HTTP_401=Register401, HTTP_500=Base500),
         tags=[Account_tag],
     )
     async def on_post(self, req: Request, res: Response):
         """
-        Регистрация
+        Registration
         """
         data: Dict
         password: str

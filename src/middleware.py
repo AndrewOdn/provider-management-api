@@ -2,6 +2,7 @@
 Middleware classes declaration
 """
 import logging
+
 import falcon
 from falcon import Request, Response
 from spectree.plugins.falcon_plugin import DocPageAsgi, OpenAPIAsgi
@@ -10,7 +11,6 @@ from api.v1.account.login import Login
 from api.v1.account.refresh import Refresh
 from api.v1.account.register import Register
 from config import ACCESS_SECRET, TOKEN_NAME
-
 from src.utils import token_is_valid
 
 
@@ -18,24 +18,11 @@ class AuthMiddleware:
     """
     Authentication middleware by JWT token
     """
-    async def process_startup(self, scope, event):
-        pass
-
-    async def process_shutdown(self, scope, event):
-        pass
-
-    async def process_request(self, req, resp):
-        pass
 
     async def process_resource(self, req: Request, res: Response, resource, params):
+        """base middleware func"""
         logging.debug("Processing request in AuthMiddleware: ")
-        if (
-            isinstance(resource, Login)
-            or isinstance(resource, Register)
-            or isinstance(resource, Refresh)
-            or isinstance(resource, DocPageAsgi)
-            or isinstance(resource, OpenAPIAsgi)
-        ):
+        if isinstance(resource, (Login, Register, Refresh, DocPageAsgi, OpenAPIAsgi)):
             logging.debug("Login or Register, dont't need token")
             return
         token = req.get_header(TOKEN_NAME, required=True)
@@ -51,16 +38,31 @@ class AuthMiddleware:
             )
         req.context = token_data
 
-    async def process_response(
-        self, req: Request, res: Response, resource, req_succeeded
-    ):
-        pass
+    # async def process_startup(self, scope, event):
+    #     """base middleware func"""
+    #     pass
+    #
+    # async def process_shutdown(self, scope, event):
+    #     """base middleware func"""
+    #     pass
+    #
+    # async def process_request(self, req, resp):
+    #     """base middleware func"""
+    #     pass
 
-    async def process_request_ws(self, req, ws):
-        pass
-
-    async def process_resource_ws(self, req, ws, resource, params):
-        pass
+    # async def process_response(
+    #     self, req: Request, res: Response, resource, req_succeeded
+    # ):
+    #     """base middleware func"""
+    #     pass
+    #
+    # async def process_request_websocket(self, req, websocket):
+    #     """base middleware func"""
+    #     pass
+    #
+    # async def process_resource_websocket(self, req, websocket, resource, params):
+    #     """base middleware func"""
+    #     pass
 
 
 whitelisted_origins = [
@@ -71,7 +73,12 @@ whitelisted_methods = ["GET", "POST", "OPTIONS", "DELETE"]
 
 
 class CorsMiddleware:
+    """
+    Cors middleware
+    """
+
     async def process_request(self, req, resp):
+        """base middleware func"""
         if req.method == "OPTIONS":
             success = False
             # validate request origin
@@ -97,6 +104,7 @@ class CorsMiddleware:
                 resp.complete = True
 
     async def process_response(self, req, resp, resource, req_succeeded):
+        """base middleware func"""
         if (
             req_succeeded
             and "ORIGIN" in req.headers

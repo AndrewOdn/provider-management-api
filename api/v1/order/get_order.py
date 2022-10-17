@@ -1,20 +1,20 @@
+"""
+api/v1/order/get_order route, now might be deprecated
+"""
 import logging
-
-import bcrypt
-import falcon
 from falcon import Request, Response
-from falcon.media.validators import jsonschema
 from spectree import Response as resp
 from sqlalchemy.future import select
 
-from src.schemas.base import base401, base500, base_header
-from src.schemas.product import Product_tag, get_data_product, get_product_200
+from src.schemas.base import Base401, Base500, BaseHeader
+from src.schemas.product import Product_tag, GetDataProduct, GetProduct200
 from src.sql.connection import async_session
 from src.sql.models import Product
-from src.utils import add_new_refresh, api, get_new_access
+from src.utils import api
 
 
 async def async_get_order(filters):
+    """Get order list by filters func"""
     async with async_session() as session:
         async with session.begin():
             query_id = True
@@ -38,27 +38,28 @@ async def async_get_order(filters):
                 .where(query_code)
             )
             out = []
-            for a in result.scalars():
+            for item in result.scalars():
                 out.append(
                     {
-                        "id": a.id,
-                        "article": a.article,
-                        "barcode": a.barcode,
-                        "name": a.name,
-                        "country": a.country,
-                        "code": a.code,
-                        "updated": str(a.updated),
+                        "id": item.id,
+                        "article": item.article,
+                        "barcode": item.barcode,
+                        "name": item.name,
+                        "country": item.country,
+                        "code": item.code,
+                        "updated": str(item.updated),
                     }
                 )
     return out
 
 
 class Get:
+    """Get_order route"""
     @api.validate(
-        json=get_data_product,
-        resp=resp(HTTP_200=get_product_200, HTTP_401=base401, HTTP_500=base500),
+        json=GetDataProduct,
+        resp=resp(HTTP_200=GetProduct200, HTTP_401=Base401, HTTP_500=Base500),
         tags=[Product_tag],
-        headers=base_header,
+        headers=BaseHeader,
     )
     async def on_post(self, req: Request, res: Response):
         """

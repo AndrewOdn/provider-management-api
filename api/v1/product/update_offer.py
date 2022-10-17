@@ -2,6 +2,7 @@
 api/v1/product/update_offer route
 """
 import logging
+
 import falcon
 from falcon import Request, Response
 from spectree import Response as resp
@@ -15,6 +16,7 @@ from src.utils import api
 
 
 async def async_update_product(filt, user_id):
+    """Update/Insert products list func"""
     async with async_session() as session:
         session.begin()
         for filters in filt:
@@ -42,10 +44,11 @@ async def async_update_product(filt, user_id):
             if filters["price"] != 0 or filters["quantity"] != 0:
                 try:
                     upd = await session.execute(
-                        f"""UPDATE offers SET price = {filters['price']}, quantity = {filters['quantity']}
+                        f"""UPDATE offers SET price = {filters['price']},
+quantity = {filters['quantity']}
 WHERE offers.product_id = '{product_id}' AND user_id = {user_id}"""
                     )
-                except Exception as exp:
+                except Exception:
                     raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
                 if upd.rowcount == 0:
                     try:
@@ -71,6 +74,7 @@ WHERE offers.product_id = '{product_id}' AND user_id = {user_id}"""
 
 
 class Update:
+    """update_offer route"""
     @api.validate(
         json=UpdateDataOffer,
         resp=resp(HTTP_200=UpdateOffer200, HTTP_401=Base401, HTTP_500=Base500),

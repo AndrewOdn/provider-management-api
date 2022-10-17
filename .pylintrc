@@ -1,2 +1,2 @@
 [MASTER]
-disable=consider-using-f-string,too-few-public-methods,import-error, no-name-in-module, unnecessary-comprehension
+disable=consider-using-f-string,too-few-public-methods,import-error, no-name-in-module, unnecessary-comprehension,unnecessary-pass, unused-argument, no-member

@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 class Base500(BaseModel):
     """http500 response validation model"""
+
     title: str = "Internal Server Error"
 
 
@@ -21,4 +22,5 @@ class BaseHeader(BaseModel):
 
 class Base401(BaseModel):
     """http401 response validation model"""
+
     title: str

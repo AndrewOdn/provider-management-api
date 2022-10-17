@@ -1,45 +1,42 @@
+"""
+api/v1/account/refresh route
+"""
 import logging
-
-import bcrypt
 import falcon
-import sqlalchemy as sa
 from falcon import Request, Response
-from falcon.media.validators import jsonschema
 from spectree import Response as resp
 from sqlalchemy.future import select
 
 from config import REFRESH_SECRET
-from src.schemas.account import Account_tag, refresh_200, refresh_401, refresh_data
-from src.schemas.base import base401, base500, base_header
+from src.schemas.account import Account_tag, Refresh200, Refresh401, RefreshData
+from src.schemas.base import Base500
 from src.sql.connection import async_session
 from src.sql.models import Token, User
 from src.utils import add_new_refresh, api, get_new_access, token_is_valid
 
 
-async def async_check_user_tokens(name, token, id):
+async def async_check_user_tokens(token):
+    """Check token's availability for user"""
     async with async_session() as session:
         async with session.begin():
             result_one = await session.execute(
-                select(Token).where(Token.user_id == id).where(Token.token == token)
+                select(Token).where(Token.token == token)
             )
-            result_two = await session.execute(
-                select(User).where(User.username == name).where(User.id == id)
-            )
-            for a1 in result_one.scalars().unique():
-                for a2 in result_two.scalars().unique():
-                    return True
+            for item in result_one.scalars().unique():
+                return True
     return False
 
 
 class Refresh:
+    """Refresh route"""
     @api.validate(
-        json=refresh_data,
-        resp=resp(HTTP_200=refresh_200, HTTP_401=refresh_401, HTTP_500=base500),
+        json=RefreshData,
+        resp=resp(HTTP_200=Refresh200, HTTP_401=Refresh401, HTTP_500=Base500),
         tags=[Account_tag],
     )
     async def on_post(self, req: Request, res: Response):
         """
-        Рефреш токена
+        Refresh token
         """
         logging.debug("Reached on_post() in Refresh")
         data = await req.get_media()
@@ -48,7 +45,7 @@ class Refresh:
         if refresh_token_data:
             username = refresh_token_data["username"]
             user_id = refresh_token_data["user_id"]
-            user = await async_check_user_tokens(username, refresh_token, user_id)
+            user = await async_check_user_tokens(refresh_token)
             if not user:
                 raise falcon.HTTPUnauthorized(
                     "Нет такого пользователя или неверный токен"

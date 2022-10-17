@@ -1,21 +1,27 @@
+"""
+Pydantic models for api/v1/account routes
+"""
 from typing import Literal
 
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, constr
 from spectree import Tag
 
 Account_tag = Tag(name="Аккаунт", description="🧾🧾")
 
 
-class register_200(BaseModel):
+class Register200(BaseModel):
+    """api/v1/account/register http200 response validation model"""
     status: bool
     title: str = "Напишите администратору сервиса для активации аккаунта"
 
 
-class register_401(BaseModel):
+class Register401(BaseModel):
+    """api/v1/account/register http401 response validation model"""
     title: str = "Пользователь с таким логином уже существует"
 
 
-class register_data(BaseModel):
+class RegisterData(BaseModel):
+    """api/v1/account/register request validation model"""
     username: constr(
         max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$"
     )
@@ -24,12 +30,14 @@ class register_data(BaseModel):
     )
 
 
-class login_200(BaseModel):
+class Login200(BaseModel):
+    """api/v1/account/login http200 response validation model"""
     accessToken: str
     refreshToken: str
 
 
-class login_data(BaseModel):
+class LoginData(BaseModel):
+    """api/v1/account/login request validation model"""
     username: constr(
         max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$"
     )
@@ -38,31 +46,37 @@ class login_data(BaseModel):
     )
 
 
-class me_data(BaseModel):
+class MeData(BaseModel):
+    """api/v1/account/me request validation model"""
     username: constr(
         max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$"
     )
 
 
-class me_200(BaseModel):
+class Me200(BaseModel):
+    """api/v1/account/me http200 response validation model"""
     user: constr(max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$")
 
 
-class refresh_data(BaseModel):
+class RefreshData(BaseModel):
+    """api/v1/account/refresh request validation model"""
     refreshToken: constr(min_length=6)
 
 
-class refresh_401(BaseModel):
+class Refresh401(BaseModel):
+    """api/v1/account/refresh http401 response validation model"""
     title: str = "Нет такого пользователя или неверный токен"
 
 
-class login_401(BaseModel):
+class Login401(BaseModel):
+    """api/v1/account/login http401 response validation model"""
     title: Literal[
         "Неверный логин или пароль",
         "Ожидайте активации вашего аккаунта администрацией ресурса",
     ]
 
 
-class refresh_200(BaseModel):
+class Refresh200(BaseModel):
+    """api/v1/account/refresh http200 response validation model"""
     accessToken: str
     refreshToken: str

@@ -11,14 +11,16 @@ Product_tag = Tag(name="Product", description="ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯�
 
 class ProductCountry(BaseModel):
     """Countries table schema validation model"""
-    code: str
-    emoji: str
-    id: str
-    name: str
+
+    code: str = None
+    emoji: str = None
+    id: str = None
+    name: str = None
 
 
 class GetDataProduct(BaseModel):
     """api/v1/product/get_products request validation model"""
+
     user_offers_only: Optional[bool] = False
     id: Optional[str] = None
     article: Optional[str] = None
@@ -54,10 +56,11 @@ class GetDataProduct(BaseModel):
 
 class ProductElementTwo(BaseModel):
     """GetProduct200 part"""
+
     user_id: int
     updated: constr(
         regex=r"202\d{1}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) "
-              r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
+        r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
     )
     id: int
     price: float
@@ -67,21 +70,23 @@ class ProductElementTwo(BaseModel):
 
 class ProductPartOne(BaseModel):
     """GetProduct200 part"""
+
     id: str
     article: str
-    barcode: str
+    barcode: str = None
     name: str
     offer: Optional[ProductElementTwo]
     country: ProductCountry
-    code: str
+    code: str = None
     updated: constr(
         regex=r"202\d{1}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) "
-              r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
+        r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
     )
 
 
 class GetProduct200(BaseModel):
     """api/v1/product/get_products http200 response validation model"""
+
     __root__: List[ProductPartOne]
 
 
@@ -98,11 +103,13 @@ class GetProduct200(BaseModel):
 
 class UpdateOffer200(BaseModel):
     """api/v1/product/update_offer http200 response validation model"""
+
     status: Union[bool, str]
 
 
 class UpdateDataOfferPart(BaseModel):
     """UpdateDataOffer part"""
+
     product_id: str
     price: Union[float, str] = None
     quantity: Union[int, str] = None
@@ -110,4 +117,5 @@ class UpdateDataOfferPart(BaseModel):
 
 class UpdateDataOffer(BaseModel):
     """api/v1/product/update_offer request validation model"""
+
     __root__: List[UpdateDataOfferPart]

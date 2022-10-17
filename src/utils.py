@@ -1,27 +1,29 @@
+"""
+Token, Spectree, Sql and etc settings
+"""
 import logging
 import time
 from datetime import datetime, timedelta
 from typing import Dict
 
 import jwt
+import sqlalchemy as sa
 from spectree import SpecTree
 
 from config import ACCESS_SECRET, REFRESH_SECRET, TIKEN_LIFE_IN_SECONDS
+from src.sql.connection import async_session
+from src.sql.models import Token
 
 API_TOKEN = "<api_token>"
 api = SpecTree(
     "falcon-asgi",
-    title="Marketplaces api service",
+    title="Provider api service",
     version="0.0.1",
 )
 
-import sqlalchemy as sa
-
-from .sql.connection import async_session
-from .sql.models import Token
-
 
 async def async_add_token(data):
+    """Token insert func"""
     async with async_session() as session:
         async with session.begin():
             await session.execute(sa.insert(Token).values(data))
@@ -30,7 +32,8 @@ async def async_add_token(data):
 
 
 async def add_new_refresh(username: str, user_id: int) -> Dict:
-    logging.debug(f"Added new refresh: {username}")
+    """Token refresh func"""
+    logging.debug("Added new refresh: %s", username)
     token = jwt.encode(
         {
             "username": username,
@@ -45,7 +48,8 @@ async def add_new_refresh(username: str, user_id: int) -> Dict:
 
 
 async def get_new_access(username: str, user_id: int) -> Dict:
-    logging.debug(f"Get new access: {username}")
+    """Creating new token by the login"""
+    logging.debug("Get new access: %s", username)
     token = jwt.encode(
         {
             "username": username,
@@ -59,6 +63,7 @@ async def get_new_access(username: str, user_id: int) -> Dict:
 
 
 async def token_is_valid(token: str, secret: str):
+    """Checking token status"""
     try:
         return jwt.decode(
             token.split(" ")[-1],
@@ -68,5 +73,5 @@ async def token_is_valid(token: str, secret: str):
             options={"verify_exp": True},
         )
     except (jwt.DecodeError, jwt.ExpiredSignatureError) as err:
-        logging.debug("Token validation failed Error :{}".format(str(err)))
+        logging.debug("Token validation failed Error : %s", err)
         return False

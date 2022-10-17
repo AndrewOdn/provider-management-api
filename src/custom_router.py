@@ -12,12 +12,12 @@ class FalconRouter:
     """Custom router"""
 
     def __init__(
-            self,
-            app_type: str = "asgi",
-            route_groups: Union[Dict, None, str] = None,
-            add_trailing_slash: bool = False,
-            api: bool = False,
-            **kwargs,
+        self,
+        app_type: str = "asgi",
+        route_groups: Union[Dict, None, str] = None,
+        add_trailing_slash: bool = False,
+        api: bool = False,
+        **kwargs,
     ) -> object:
         self.app = self._create_app(app_type, **kwargs)
         self.app.req_options.strip_url_path_trailing_slash = add_trailing_slash
