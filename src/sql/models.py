@@ -30,8 +30,8 @@ class Product(Base):
         onupdate=func.now(),
     )
 
-    offers = relationship("Offer", lazy='joined')
-    country = relationship("Country", lazy='joined')
+    # offers = relationship("Offer", lazy='joined')
+    # country = relationship("Country", lazy='joined')
 
 
 class Country(Base):
@@ -44,7 +44,7 @@ class Country(Base):
     emoji = Column(VARCHAR(10), nullable=True, default=None)
     code = Column(Integer(), nullable=True, default=None)
 
-    products = relationship("Product", back_populates="country", lazy='joined')
+    # products = relationship("Product", back_populates="country", lazy='joined')
 
 
 class User(Base):
@@ -58,8 +58,8 @@ class User(Base):
     password = Column(VARCHAR(256))
     activated = Column(SmallInteger(), default=0)
 
-    personal_offers = relationship("Offer", lazy='joined')
-    tokens = relationship("Token", lazy='joined')
+    # personal_offers = relationship("Offer", lazy='joined')
+    # tokens = relationship("Token", lazy='joined')
 
 
 class Offer(Base):
@@ -83,8 +83,8 @@ class Offer(Base):
         onupdate=func.now(),
     )
 
-    product = relationship("Product", back_populates="offers", lazy='joined')
-    user = relationship("User", back_populates="personal_offers", lazy='joined')
+    # product = relationship("Product", back_populates="offers", lazy='joined')
+    # user = relationship("User", back_populates="personal_offers", lazy='joined')
 
 
 class Token(Base):
@@ -99,4 +99,4 @@ class Token(Base):
     )
     token = Column(VARCHAR(256))
 
-    user = relationship("User", back_populates="tokens", lazy='joined')
+    # user = relationship("User", back_populates="tokens", lazy='joined')
