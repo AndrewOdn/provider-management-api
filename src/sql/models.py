@@ -21,7 +21,6 @@ class Product(Base):
     article = Column(VARCHAR(50), nullable=True, default=None)
     barcode = Column(VARCHAR(50), nullable=True, default=None)
     name = Column(VARCHAR(255), nullable=True, default=None)
-    country = Column(VARCHAR(80), nullable=True, default=None)
     code = Column(VARCHAR(80), nullable=True, default=None)
     country_id = Column(VARCHAR(36), ForeignKey("countries.id"), nullable=True, default=None)
     photo = Column(VARCHAR(255), nullable=True, default=None)
@@ -61,6 +60,7 @@ class User(Base):
 
     personal_offers = relationship("Offer", lazy='joined')
     tokens = relationship("Token", lazy='joined')
+
 
 class Offer(Base):
     """Offer model"""
