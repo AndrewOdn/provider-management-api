@@ -17,7 +17,8 @@ async def async_get_product(filters, user_id):
     """Get products and offers list by filters func"""
     async with async_session() as session:
         async with session.begin():
-            out = []
+            res = []
+            res['data'] = []
             query = f"""SELECT users.username AS Username, partners.name AS partner_name, segments.name AS segment_name,
 countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code, segments.id AS segment_id,
 categories.name AS categories_name,categories.id AS categories_id, brands.name AS brands_name, brands.id AS brands_id, 
@@ -108,9 +109,7 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                         "name": item.countries_name,
                     }
                 }
-                out.append(output)
-    res = []
-    res['data'] = out
+                res['data'].append(output)
     res['page'] = filters['page']
     res['page_size'] = filters['page_size']
     return res
