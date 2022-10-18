@@ -19,7 +19,7 @@ async def async_get_product(filters, user_id):
         async with session.begin():
             out = []
             query = f"""SELECT users.username AS Username, partners.name AS partner_name, segments.name AS segment_name,
-countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code, segments.id AS segment_id
+countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code, segments.id AS segment_id,
 categories.name AS categories_name,categories.id AS categories_id, brands.name AS brands_name, brands.id AS brands_id, 
 products.article AS product_article, products.barcode AS product_barcode, products.name AS product_name,
 products.code AS product_code, products.updated AS product_updated, products.id AS product_id
