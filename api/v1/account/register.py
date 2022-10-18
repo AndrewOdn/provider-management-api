@@ -58,6 +58,10 @@ class Register:
         """
         Registration
         """
+        if True:
+            res.status = falcon.HTTP_INTERNAL_SERVER_ERROR
+            res.media = {"title": "Регистрация временно недоступна"}
+            raise falcon.HTTPInternalServerError("Регистрация временно недоступна")
         data: Dict
         password: str
         data = await req.get_media()

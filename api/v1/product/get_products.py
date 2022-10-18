@@ -1,8 +1,9 @@
 """
 api/v1/product/get_products route
 """
+from decimal import Decimal
 import logging
-
+import json
 from falcon import Request, Response
 from spectree import Response as resp
 
@@ -17,30 +18,60 @@ async def async_get_product(filters, user_id):
     async with async_session() as session:
         async with session.begin():
             out = []
-            query = f"""SELECT products.id AS id, products.article AS article,
-                        products.barcode AS barcode, products.name AS name, countries.code AS country_code,
-                        countries.emoji AS country_emoji, countries.id AS country_id,
-                        countries.name AS country_name, offers.id AS offer_id, offers.price AS 
-                        offer_price, offers.product_id AS offer_product_id,offers.quantity AS offer_quantity,
-                        offers.user_id AS offer_user_id, offers.updated AS offer_updated,
-                        products.code AS code, products.updated AS updated FROM products
-                        LEFT OUTER JOIN offers ON offers.product_id = products.id AND user_id = {user_id}
-                        LEFT OUTER JOIN countries ON countries.id = products.country_id"""
+            query = f"""SELECT users.username AS Username, partners.name AS partner_name, segments.name AS segment_name,
+countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code,
+categories.name AS categories_name, brands.name AS brands_name,
+products.article AS product_article, products.barcode AS product_barcode, products.name AS product_name,
+products.code AS product_code, products.updated AS product_updated,
+offers.price AS offer_price, offers.quantity AS offer_quantity, offers.updated AS offer_updated FROM users
+LEFT OUTER JOIN partners ON users.partner_id = partners.id AND users.id = {user_id}
+LEFT OUTER JOIN partners_segments ON partners_segments.partner_id = partners.id
+LEFT OUTER JOIN segments ON partners_segments.segment_id = segments.id
+LEFT OUTER JOIN products ON products.segment_id = segments.id
+LEFT OUTER JOIN brands ON products.brand_id = brands.id
+LEFT OUTER JOIN categories ON products.category_id = categories.id
+LEFT OUTER JOIN countries ON products.country_id = countries.id
+LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {user_id}"""
             prefix = " WHERE "
-            """OFFSET {filters['page'] * filters['page_size']}
-                        LIMIT {filters['page_size']}"""
             if filters:
-                if "country" in filters:
-                    query += prefix + f"countries.name = '{filters['country']}'"
+                if "partner_name" in filters:
+                    query += prefix + f"partners.name = '{filters['partner_name']}'"
                     prefix = " AND "
-                if "id" in filters:
-                    query += prefix + f"products.id = '{filters['id']}'"
+                if "segment_name" in filters:
+                    query += prefix + f"segments.name = '{filters['segment_name']}'"
                     prefix = " AND "
-                if "article" in filters:
-                    query += prefix + f"products.article = '{filters['article']}'"
+                if "category_name" in filters:
+                    query += prefix + f"categories.name = '{filters['category_name']}'"
                     prefix = " AND "
-                if "code" in filters:
-                    query += prefix + f"products.code = '{filters['code']}'"
+                if "brand_name" in filters:
+                    query += prefix + f"brands.name = '{filters['brand_name']}'"
+                    prefix = " AND "
+                if "product_article" in filters:
+                    query += prefix + f"products.article = '{filters['product_article']}'"
+                    prefix = " AND "
+                if "product_barcode" in filters:
+                    query += prefix + f"products.barcode = '{filters['product_barcode']}'"
+                    prefix = " AND "
+                if "product_name" in filters:
+                    query += prefix + f"products.name = '{filters['product_name']}'"
+                    prefix = " AND "
+                if "product_code" in filters:
+                    query += prefix + f"products.code = '{filters['product_code']}'"
+                    prefix = " AND "
+                if "offer_price" in filters:
+                    query += prefix + f"offers.price = '{filters['offer_price']}'"
+                    prefix = " AND "
+                if "offer_quantity" in filters:
+                    query += prefix + f"offers.quantity = '{filters['offer_quantity']}'"
+                    prefix = " AND "
+                if "countries_name" in filters:
+                    query += prefix + f"countries.name = '{filters['countries_name']}'"
+                    prefix = " AND "
+                if "countries_code" in filters:
+                    query += prefix + f"countries.code = '{filters['countries_code']}'"
+                    prefix = " AND "
+                if "countries_emoji" in filters:
+                    query += prefix + f"countries.emoji = '{filters['countries_emoji']}'"
                     prefix = " AND "
                 if 'page' not in filters:
                     filters['page'] = 0
@@ -52,31 +83,32 @@ async def async_get_product(filters, user_id):
             result = await session.execute(query)
 
             for item in result:
-                # if a[12] == user_id:
-                temp = {
-                    "id": item[0],
-                    "article": item[1],
-                    "barcode": item[2],
-                    "name": item[3],
-                    "country": {
-                        "code": item[4],
-                        "emoji": item[5],
-                        "id": item[6],
-                        "name": item[7],
+                output = {
+                    "username": item.username,
+                    "partner_name": item.partner_name,
+                    "segment_name": item.segment_name,
+                    "category_name": item.categories_name,
+                    "brand_name": item.brands_name,
+                    "product": {
+                        "article": item.product_article,
+                        "barcode": item.product_barcode,
+                        "name": item.product_name,
+                        "code": item.product_code,
+                        "updated": str(item.product_updated),
                     },
-                    "code": item[14],
-                    "updated": str(item[15]),
-                }
-                if item[13] and item[9]:
-                    temp["offer"] = {
-                        "id": item[8],
-                        "price": float(item[9]) if item[9] else None,
-                        "product_id": item[10],
-                        "quantity": item[11],
-                        "user_id": item[12],
-                        "updated": str(item[13]) if item[13] else None,
+                    "offer": {
+                        "price": str(item.offer_price),
+                        "quantity": item.offer_quantity,
+                        "updated": str(item.offer_updated),
+                    },
+                    "country": {
+                        "code": item.countries_code,
+                        "emoji": item.countries_emoji,
+                        "name": item.countries_name,
                     }
-                out.append(temp)
+                }
+                out.append(output)
+
     return out
 
 

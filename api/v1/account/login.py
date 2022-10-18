@@ -47,7 +47,7 @@ class Login:
         """Login"""
         logging.debug("Reached on_post() in Login")
         data = await req.get_media()
-        username = data["username"].lower()
+        username = data["username"]
         user = await async_check_users(username)
         if not user or not bcrypt.checkpw(
             data["password"].encode("utf-8"), user["password"].encode("utf-8")

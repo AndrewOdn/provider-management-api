@@ -14,18 +14,43 @@ class ProductCountry(BaseModel):
 
     code: str = None
     emoji: str = None
-    id: str = None
     name: str = None
+
+
+class ProductProduct(BaseModel):
+    """Countries table schema validation model"""
+
+    article: str = None
+    barcode: str = None
+    name: str = None
+    code: str = None
+    updated: str = None
+
+
+class ProductOffer(BaseModel):
+    """Countries table schema validation model"""
+
+    price: str = None
+    quantity: int = None
 
 
 class GetDataProduct(BaseModel):
     """api/v1/product/get_products request validation model"""
+    countries_emoji: Optional[str] = None
+    countries_code: Optional[int] = None
+    countries_name: Optional[str] = None
+    offer_quantity: Optional[int] = None
+    offer_price: Optional[float] = None
+    product_name: Optional[str] = None
+    product_barcode: Optional[str] = None
+    product_article: Optional[str] = None
+    brand_name: Optional[str] = None
+    category_name: Optional[str] = None
+    segment_name: Optional[str] = None
+    partner_name: Optional[str] = None
+    product_code: Optional[str] = None
     page_size: Optional[int] = None
     page: Optional[int] = None
-    id: Optional[str] = None
-    article: Optional[str] = None
-    country: Optional[str] = None
-    code: Optional[str] = None
 
 
 # class ProductByUserElementTwo(BaseModel):
@@ -71,17 +96,14 @@ class ProductElementTwo(BaseModel):
 class ProductPartOne(BaseModel):
     """GetProduct200 part"""
 
-    id: str
-    article: str
-    barcode: str = None
-    name: str
-    offer: Optional[ProductElementTwo]
+    username: str = None
+    partner_name: str = None
+    segment_name: str = None
+    category_name: str = None
+    brand_name: str = None
+    product: ProductProduct
+    offer: ProductOffer
     country: ProductCountry
-    code: str = None
-    updated: constr(
-        regex=r"202\d{1}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) "
-              r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
-    )
 
 
 class GetProduct200(BaseModel):
