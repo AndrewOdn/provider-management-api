@@ -16,10 +16,6 @@ async def async_get_product(filters, user_id):
     """Get products and offers list by filters func"""
     async with async_session() as session:
         async with session.begin():
-            if not 'page' in filters:
-                filters['page'] = 0
-            if not 'page_size' in filters:
-                filters['page_size'] = 20
             out = []
             query = f"""SELECT products.id AS id, products.article AS article,
                         products.barcode AS barcode, products.name AS name, countries.code AS country_code,
@@ -29,10 +25,10 @@ async def async_get_product(filters, user_id):
                         offers.user_id AS offer_user_id, offers.updated AS offer_updated,
                         products.code AS code, products.updated AS updated FROM products
                         LEFT OUTER JOIN offers ON offers.product_id = products.id AND user_id = {user_id}
-                        LEFT OUTER JOIN countries ON countries.id = products.country_id
-                        OFFSET {filters['page'] * filters['page_size']}
-                        LIMIT {filters['page_size']}"""
+                        LEFT OUTER JOIN countries ON countries.id = products.country_id"""
             prefix = " WHERE "
+            """OFFSET {filters['page'] * filters['page_size']}
+                        LIMIT {filters['page_size']}"""
             if filters:
                 if "country" in filters:
                     query += prefix + f"countries.name = '{filters['country']}'"
@@ -46,6 +42,12 @@ async def async_get_product(filters, user_id):
                 if "code" in filters:
                     query += prefix + f"products.code = '{filters['code']}'"
                     prefix = " AND "
+                if 'page' not in filters:
+                    filters['page'] = 0
+                if 'page_size' not in filters:
+                    filters['page_size'] = 20
+                    query += f"""OFFSET {filters['page'] * filters['page_size']}
+                                 LIMIT {filters['page_size']}"""
 
             result = await session.execute(query)
 
@@ -80,6 +82,7 @@ async def async_get_product(filters, user_id):
 
 class Get:
     """get_products route"""
+
     @api.validate(
         json=GetDataProduct,
         resp=resp(HTTP_200=GetProduct200, HTTP_401=Base401, HTTP_500=Base500),
