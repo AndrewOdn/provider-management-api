@@ -73,12 +73,12 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                 if "countries_emoji" in filters:
                     query += prefix + f"countries.emoji = '{filters['countries_emoji']}'"
                     prefix = " AND "
-                if 'page' not in filters:
-                    filters['page'] = 0
-                if 'page_size' not in filters:
-                    filters['page_size'] = 20
-                    query += f""" OFFSET {filters['page'] * filters['page_size']}
-                                 LIMIT {filters['page_size']}"""
+            if 'page' not in filters:
+                filters['page'] = 0
+            if 'page_size' not in filters:
+                filters['page_size'] = 20
+                query += f""" OFFSET {filters['page'] * filters['page_size']}
+                             LIMIT {filters['page_size']}"""
 
             result = await session.execute(query)
 
