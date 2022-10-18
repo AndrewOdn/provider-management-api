@@ -73,6 +73,18 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                 if "countries_emoji" in filters:
                     query += prefix + f"countries.emoji = '{filters['countries_emoji']}'"
                     prefix = " AND "
+                if "segment_id" in filters:
+                    query += prefix + f"segments.id = '{filters['segment_id']}'"
+                    prefix = " AND "
+                if "brands_id" in filters:
+                    query += prefix + f"brands.id = '{filters['brands_id']}'"
+                    prefix = " AND "
+                if "categories_id" in filters:
+                    query += prefix + f"categories.id= '{filters['categories_id']}'"
+                    prefix = " AND "
+                if "product_id" in filters:
+                    query += prefix + f"products.id = '{filters['product_id']}'"
+                    prefix = " AND "
             if 'page' not in filters:
                 filters['page'] = 0
             if 'page_size' not in filters:
