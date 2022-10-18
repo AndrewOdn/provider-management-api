@@ -11,7 +11,7 @@ from config import REFRESH_SECRET
 from src.schemas.account import Account_tag, Refresh200, Refresh401, RefreshData
 from src.schemas.base import Base500
 from src.sql.connection import async_session
-from src.sql.models import Token, User
+from src.sql.models import Token
 from src.utils import add_new_refresh, api, get_new_access, token_is_valid
 
 

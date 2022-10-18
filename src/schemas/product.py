@@ -20,8 +20,8 @@ class ProductCountry(BaseModel):
 
 class GetDataProduct(BaseModel):
     """api/v1/product/get_products request validation model"""
-
-    user_offers_only: Optional[bool] = False
+    page_size: Optional[int] = None
+    page: Optional[int] = None
     id: Optional[str] = None
     article: Optional[str] = None
     country: Optional[str] = None
@@ -60,7 +60,7 @@ class ProductElementTwo(BaseModel):
     user_id: int
     updated: constr(
         regex=r"202\d{1}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) "
-        r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
+              r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
     )
     id: int
     price: float
@@ -80,7 +80,7 @@ class ProductPartOne(BaseModel):
     code: str = None
     updated: constr(
         regex=r"202\d{1}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) "
-        r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
+              r"([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\.\d{6}\+\d{2}\:\d{2}$"
     )
 
 

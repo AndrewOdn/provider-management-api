@@ -48,7 +48,7 @@ async def async_update_product(filt, user_id):
 quantity = {filters['quantity']}
 WHERE offers.product_id = '{product_id}' AND user_id = {user_id}"""
                     )
-                except Exception:
+                except Exception as exp:
                     raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
                 if upd.rowcount == 0:
                     try:
