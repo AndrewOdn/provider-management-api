@@ -125,7 +125,7 @@ class ProductPartOne(BaseModel):
 class GetProduct200(BaseModel):
     """api/v1/product/get_products http200 response validation model"""
 
-    __root__: List[ProductPartOne]
+    data: List[ProductPartOne]
     page: int = None
     page_size: int = None
 

@@ -109,9 +109,11 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                     }
                 }
                 out.append(output)
-    out['page'] = filters['page']
-    out['page_size'] = filters['page_size']
-    return out
+    res = []
+    res['data'] = out
+    res['page'] = filters['page']
+    res['page_size'] = filters['page_size']
+    return res
 
 
 class Get:
