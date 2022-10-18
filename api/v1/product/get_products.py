@@ -138,7 +138,7 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
     query = "SELECT COUNT(products.id) FROM users " + query
     result = await session.execute(query)
     for item in result:
-        total = item
+        total = item.count
     res['page'] = filters['page'] + 1
     res['page_size'] = filters['page_size']
     res['total'] = total
