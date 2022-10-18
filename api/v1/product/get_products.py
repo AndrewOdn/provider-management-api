@@ -134,7 +134,7 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                     },
                 }
                 res['data'].append(output)
-    query = query[query.find('LEFT OUTER JOIN partners'):query.find(' WHERE ')]
+    query = query[query.find('LEFT OUTER JOIN partners'):query.find(' OFFSET')]
     query = "SELECT COUNT(products.id) FROM users " + query
     result = await session.execute(query)
     for item in result:
