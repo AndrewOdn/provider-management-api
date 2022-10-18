@@ -98,9 +98,9 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                         "updated": str(item.product_updated),
                     },
                     "offer": {
-                        "price": str(item.offer_price),
+                        "price": float(item.offer_price) if item.offer_price else None,
                         "quantity": item.offer_quantity,
-                        "updated": str(item.offer_updated),
+                        "updated": str(item.offer_updated) if item.offer_updated else None,
                     },
                     "country": {
                         "code": item.countries_code,

@@ -49,7 +49,7 @@ class ProductProduct(BaseModel):
 class ProductOffer(BaseModel):
     """Offers table schema validation model"""
 
-    price: str = None
+    price: float = None
     quantity: int = None
 
 
