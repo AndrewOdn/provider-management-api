@@ -135,6 +135,7 @@ class GetProduct200(BaseModel):
     data: List[ProductPartOne]
     page: int = None
     page_size: int = None
+    total: int = None
 
 
 # class GetProductByUser200(BaseModel):
