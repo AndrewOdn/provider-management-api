@@ -9,17 +9,36 @@ from spectree import Tag
 Product_tag = Tag(name="Product", description="ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ")
 
 
+class ProductBrand(BaseModel):
+    """Brands table schema validation model"""
+    id: int = None
+    name: str = None
+
+
+class ProductCategory(BaseModel):
+    """Categories table schema validation model"""
+
+    id: int = None
+    name: str = None
+
+
+class ProductSegment(BaseModel):
+    """Segments table schema validation model"""
+
+    id: int = None
+    name: str = None
+
+
 class ProductCountry(BaseModel):
     """Countries table schema validation model"""
-
     code: str = None
     emoji: str = None
     name: str = None
 
 
 class ProductProduct(BaseModel):
-    """Countries table schema validation model"""
-
+    """Products table schema validation model"""
+    id: int = None
     article: str = None
     barcode: str = None
     name: str = None
@@ -28,7 +47,7 @@ class ProductProduct(BaseModel):
 
 
 class ProductOffer(BaseModel):
-    """Countries table schema validation model"""
+    """Offers table schema validation model"""
 
     price: str = None
     quantity: int = None
@@ -95,12 +114,9 @@ class ProductElementTwo(BaseModel):
 
 class ProductPartOne(BaseModel):
     """GetProduct200 part"""
-
-    username: str = None
-    partner_name: str = None
-    segment_name: str = None
-    category_name: str = None
-    brand_name: str = None
+    segment: ProductSegment
+    category: ProductCategory
+    brand: ProductBrand
     product: ProductProduct
     offer: ProductOffer
     country: ProductCountry
@@ -112,6 +128,7 @@ class GetProduct200(BaseModel):
     __root__: List[ProductPartOne]
     page: int = None
     page_size: int = None
+
 
 # class GetProductByUser200(BaseModel):
 #     __root__: List[ProductByUserPartOne]

@@ -19,10 +19,10 @@ async def async_get_product(filters, user_id):
         async with session.begin():
             out = []
             query = f"""SELECT users.username AS Username, partners.name AS partner_name, segments.name AS segment_name,
-countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code,
-categories.name AS categories_name, brands.name AS brands_name,
+countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code, segments.id AS segment_id
+categories.name AS categories_name,categories.id AS categories_id, brands.name AS brands_name, brands.id AS brands_id, 
 products.article AS product_article, products.barcode AS product_barcode, products.name AS product_name,
-products.code AS product_code, products.updated AS product_updated,
+products.code AS product_code, products.updated AS product_updated, products.id AS product_id
 offers.price AS offer_price, offers.quantity AS offer_quantity, offers.updated AS offer_updated FROM users
 LEFT OUTER JOIN partners ON users.partner_id = partners.id AND users.id = {user_id}
 LEFT OUTER JOIN partners_segments ON partners_segments.partner_id = partners.id
@@ -84,12 +84,13 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
 
             for item in result:
                 output = {
-                    "username": item.username,
-                    "partner_name": item.partner_name,
-                    "segment_name": item.segment_name,
-                    "category_name": item.categories_name,
-                    "brand_name": item.brands_name,
+                    # "username": item.username,
+                    # "partner_name": item.partner_name,
+                    "segment": {"id": item.segment_id, "name": item.segment_name},
+                    "brand": {"id": item.brands_id, "name": item.brands_name},
+                    "category": {"id": item.categories_id, "name": item.categories_name},
                     "product": {
+                        "id": item.product_id,
                         "article": item.product_article,
                         "barcode": item.product_barcode,
                         "name": item.product_name,
