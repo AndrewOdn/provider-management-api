@@ -110,7 +110,8 @@ class GetProduct200(BaseModel):
     """api/v1/product/get_products http200 response validation model"""
 
     __root__: List[ProductPartOne]
-
+    page: int = None
+    page_size: int = None
 
 # class GetProductByUser200(BaseModel):
 #     __root__: List[ProductByUserPartOne]
