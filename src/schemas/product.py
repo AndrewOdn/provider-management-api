@@ -120,6 +120,7 @@ class ProductPartOne(BaseModel):
     product: ProductProduct
     offer: ProductOffer
     country: ProductCountry
+    favourite: bool
 
 
 class GetProduct200(BaseModel):

@@ -106,7 +106,8 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                         "code": item.countries_code,
                         "emoji": item.countries_emoji,
                         "name": item.countries_name,
-                    }
+                    },
+                    "favourite": False
                 }
                 res['data'].append(output)
     res['page'] = filters['page']
