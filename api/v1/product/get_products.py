@@ -46,7 +46,7 @@ async def async_get_product(filters, user_id):
                     filters['page'] = 0
                 if 'page_size' not in filters:
                     filters['page_size'] = 20
-                    query += f"""OFFSET {filters['page'] * filters['page_size']}
+                    query += f""" OFFSET {filters['page'] * filters['page_size']}
                                  LIMIT {filters['page_size']}"""
 
             result = await session.execute(query)
