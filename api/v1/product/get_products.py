@@ -22,7 +22,7 @@ async def async_get_product(filters, user_id):
 countries.name AS countries_name, countries.emoji AS countries_emoji, countries.code AS countries_code, segments.id AS segment_id,
 categories.name AS categories_name,categories.id AS categories_id, brands.name AS brands_name, brands.id AS brands_id, 
 products.article AS product_article, products.barcode AS product_barcode, products.name AS product_name,
-products.code AS product_code, products.updated AS product_updated, products.id AS product_id
+products.code AS product_code, products.updated AS product_updated, products.id AS product_id,
 offers.price AS offer_price, offers.quantity AS offer_quantity, offers.updated AS offer_updated FROM users
 LEFT OUTER JOIN partners ON users.partner_id = partners.id AND users.id = {user_id}
 LEFT OUTER JOIN partners_segments ON partners_segments.partner_id = partners.id
