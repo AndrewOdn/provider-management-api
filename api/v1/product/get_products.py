@@ -34,9 +34,9 @@ LEFT OUTER JOIN countries ON products.country_id = countries.id
 LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {user_id}"""
             prefix = " WHERE "
             if filters:
-                if "partner_name" in filters:
-                    query += prefix + f"partners.name = '{filters['partner_name']}'"
-                    prefix = " AND "
+                # if "partner_name" in filters:
+                #     query += prefix + f"partners.name = '{filters['partner_name']}'"
+                #     prefix = " AND "
                 if "segment_name" in filters:
                     query += prefix + f"segments.name = '{filters['segment_name']}'"
                     prefix = " AND "
@@ -55,9 +55,9 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                 if "product_name" in filters:
                     query += prefix + f"products.name = '{filters['product_name']}'"
                     prefix = " AND "
-                if "product_code" in filters:
-                    query += prefix + f"products.code = '{filters['product_code']}'"
-                    prefix = " AND "
+                # if "product_code" in filters:
+                #     query += prefix + f"products.code = '{filters['product_code']}'"
+                #     prefix = " AND "
                 if "offer_price" in filters:
                     query += prefix + f"offers.price = '{filters['offer_price']}'"
                     prefix = " AND "
@@ -84,6 +84,19 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {
                     prefix = " AND "
                 if "product_id" in filters:
                     query += prefix + f"products.id = '{filters['product_id']}'"
+                    prefix = " AND "
+
+                if "search" in filters:
+                    query += prefix + f"segments.name LIKE '%{filters['search']}%' or brands.name LIKE '%{filters['search']}%' or categories.name LIKE '%{filters['search']}%' or products.name LIKE '%{filters['search']}%' or products.id LIKE '%{filters['search']}%' or products.article LIKE '%{filters['search']}%'"
+                    prefix = " AND "
+                # if "favorite" in filters:
+                #     query += prefix + f"products.id = '{filters['product_id']}'"
+                #     prefix = " AND "
+                if "have_price" in filters:
+                    if filters['have_price'] is True:
+                        query += prefix + "offers.price > 0"
+                    else:
+                        query += prefix + "(offers.price = 0 or offers.price is null)"
                     prefix = " AND "
             if 'page' not in filters:
                 filters['page'] = 0

@@ -55,6 +55,9 @@ class ProductOffer(BaseModel):
 
 class GetDataProduct(BaseModel):
     """api/v1/product/get_products request validation model"""
+    favorite: Optional[bool] = None
+    have_price: Optional[bool] = None
+
     countries_emoji: Optional[str] = None
     countries_code: Optional[int] = None
     countries_name: Optional[str] = None
@@ -66,8 +69,12 @@ class GetDataProduct(BaseModel):
     brand_name: Optional[str] = None
     category_name: Optional[str] = None
     segment_name: Optional[str] = None
-    partner_name: Optional[str] = None
-    product_code: Optional[str] = None
+
+    segment_id: Optional[int] = None
+    brands_id: Optional[int] = None
+    categories_id: Optional[int] = None
+    product_id: Optional[int] = None
+
     page_size: Optional[int] = None
     page: Optional[int] = None
 
