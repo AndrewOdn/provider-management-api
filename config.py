@@ -9,7 +9,7 @@ REFRESH_SECRET = "F'8ZL%vr{tCw3;^R'4kM1=>yK~N&s0L9#h]%@XSv'4XSwBUvz-ga-iLf]DB88{
 TOKEN_NAME = "authorization"
 
 DB_HOST = "localhost"
-DB_PORT = 5434
+DB_PORT = 5432
 DB_NAME = "provider_api"
 DB_USER = "admin"
 DB_PASS = "2001"
