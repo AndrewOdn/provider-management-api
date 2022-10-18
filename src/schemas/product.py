@@ -42,8 +42,8 @@ class ProductProduct(BaseModel):
     article: str = None
     barcode: str = None
     name: str = None
-    code: str = None
     updated: str = None
+    favourite: bool = None
 
 
 class ProductOffer(BaseModel):
@@ -120,7 +120,6 @@ class ProductPartOne(BaseModel):
     product: ProductProduct
     offer: ProductOffer
     country: ProductCountry
-    favourite: bool
 
 
 class GetProduct200(BaseModel):
