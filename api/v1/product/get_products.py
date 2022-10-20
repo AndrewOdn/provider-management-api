@@ -31,7 +31,7 @@ LEFT OUTER JOIN products ON products.segment_id = segments.id
 LEFT OUTER JOIN brands ON products.brand_id = brands.id
 LEFT OUTER JOIN categories ON products.category_id = categories.id
 LEFT OUTER JOIN countries ON products.country_id = countries.id
-LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.user_id = {user_id}"""
+LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.partner_id = users.partner_id"""
             prefix = " WHERE "
             if filters:
                 # if "partner_name" in filters:
