@@ -58,11 +58,17 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.partner_id 
                 # if "product_code" in filters:
                 #     query += prefix + f"products.code = '{filters['product_code']}'"
                 #     prefix = " AND "
-                if "offer_price" in filters:
-                    query += prefix + f"offers.price = '{filters['offer_price']}'"
+                if "offer_price_asc" in filters:
+                    query += prefix + f"offers.price >= '{filters['offer_price_asc']}'"
                     prefix = " AND "
-                if "offer_quantity" in filters:
-                    query += prefix + f"offers.quantity = '{filters['offer_quantity']}'"
+                if "offer_price_desc" in filters:
+                    query += prefix + f"offers.price <= '{filters['offer_price_desc']}'"
+                    prefix = " AND "
+                if "offer_quantity_asc" in filters:
+                    query += prefix + f"offers.quantity >= '{filters['offer_quantity_asc']}'"
+                    prefix = " AND "
+                if "offer_quantity_desc" in filters:
+                    query += prefix + f"offers.quantity <= '{filters['offer_quantity_desc']}'"
                     prefix = " AND "
                 if "countries_name" in filters:
                     query += prefix + f"countries.name = '{filters['countries_name']}'"

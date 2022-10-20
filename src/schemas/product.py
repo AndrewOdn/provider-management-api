@@ -61,8 +61,10 @@ class GetDataProduct(BaseModel):
     countries_emoji: Optional[str] = None
     countries_code: Optional[int] = None
     countries_name: Optional[str] = None
-    offer_quantity: Optional[int] = None
-    offer_price: Optional[float] = None
+    offer_quantity_asc: Optional[int] = None
+    offer_quantity_desc: Optional[int] = None
+    offer_price_asc: Optional[float] = None
+    offer_price_desc: Optional[float] = None
     product_name: Optional[str] = None
     product_barcode: Optional[str] = None
     product_article: Optional[str] = None
