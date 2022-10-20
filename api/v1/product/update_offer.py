@@ -55,7 +55,7 @@ async def async_update_product(filt, user_id):
             else:
                 await session.execute(
                     delete(Offer)
-                    .where(Offer.user_id == user_id)
+                    .where(Offer.partner_id == partner_id)
                     .where(Offer.product_id == product_id)
                 )
                 await session.commit()
