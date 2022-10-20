@@ -21,7 +21,6 @@ from sqlalchemy.sql import func
 
 Base = declarative_base()
 
-
 PartnerSegment = Table(
     "partners_segments",
     Base.metadata,
@@ -34,15 +33,23 @@ PartnerSegment = Table(
     PrimaryKeyConstraint("partner_id", "segment_id", name="p_partner_id_segment_id"),
 )
 
-ProductFavourite = Table(
-    "products_favourites",
-    Base.metadata,
-    Column("user_id", Integer(), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True),
-    Column(
-        "product_id", VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), primary_key=True
-    ),
-    PrimaryKeyConstraint("user_id", "product_id", name="p_user_id_product_id"),
-)
+# ProductFavourite = Table(
+#     "products_favourites",
+#     Base.metadata,
+#     Column("user_id", Integer(), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True),
+#     Column(
+#         "product_id", VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), primary_key=True
+#     ),
+#     PrimaryKeyConstraint("user_id", "product_id", name="p_user_id_product_id"),
+# )
+
+
+class ProductFavourite(Base):
+    """ProductFavouriteNew model"""
+    __tablename__ = "products_favourites"
+    __table_args__ = (PrimaryKeyConstraint("user_id", "product_id"),)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    product_id = Column(VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), primary_key=True)
 
 
 class Product(Base):

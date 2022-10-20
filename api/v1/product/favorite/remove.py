@@ -1,5 +1,5 @@
 """
-api/v1/product/update_offer route
+api/v1/product/favorite/remove route
 """
 import logging
 
@@ -20,7 +20,7 @@ async def async_remove_favorite(data, user_id):
         await session.execute(
             delete(ProductFavourite)
                 .where(ProductFavourite.user_id == user_id)
-                .where(ProductFavourite.product_id == data['product_id'])
+                .where(ProductFavourite.product_id == str(data['product_id']))
         )
         await session.commit()
     return {"status": True}
