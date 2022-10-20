@@ -1,9 +1,13 @@
 """Database models"""
+import enum
 
 from sqlalchemy import (
+    JSON,
     VARCHAR,
+    Boolean,
     Column,
     DateTime,
+    Enum,
     ForeignKey,
     Integer,
     Numeric,
@@ -12,7 +16,7 @@ from sqlalchemy import (
     Table,
 )
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+# from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 Base = declarative_base()
@@ -28,6 +32,16 @@ PartnerSegment = Table(
         "segment_id", Integer(), ForeignKey("segments.id", ondelete="CASCADE"), primary_key=True
     ),
     PrimaryKeyConstraint("partner_id", "segment_id", name="p_partner_id_segment_id"),
+)
+
+ProductFavourite = Table(
+    "products_favourites",
+    Base.metadata,
+    Column("user_id", Integer(), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True),
+    Column(
+        "product_id", VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), primary_key=True
+    ),
+    PrimaryKeyConstraint("user_id", "product_id", name="p_user_id_product_id"),
 )
 
 
@@ -51,10 +65,11 @@ class Product(Base):
         onupdate=func.now(),
     )
 
-    offers = relationship("Offer")
-    country = relationship("Country")
-    brand = relationship("Brand")
-    segment = relationship("Segment")
+    # offers = relationship("Offer")
+    # country = relationship("Country")
+    # brand = relationship("Brand")
+    # segment = relationship("Segment")
+    # category = relationship("Category")
 
 
 class ProductTask(Base):
@@ -67,7 +82,7 @@ class ProductTask(Base):
     name = Column(VARCHAR(255), nullable=True, default=None)
     partner_id = Column(Integer(), ForeignKey("partners.id"), nullable=True, default=None)
 
-    partner = relationship("Partner")
+    # partner = relationship("Partner")
 
 
 class Brand(Base):
@@ -96,9 +111,7 @@ class Segment(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(VARCHAR(255), nullable=False)
 
-    partners = relationship(
-        "Partner", secondary=PartnerSegment, back_populates="segments"  # backref="Segment",
-    )
+    # partners = relationship("Partner", secondary=PartnerSegment, back_populates="segments")
 
 
 class Country(Base):
@@ -111,7 +124,7 @@ class Country(Base):
     emoji = Column(VARCHAR(10), nullable=True, default=None)
     code = Column(Integer(), nullable=True, default=None)
 
-    products = relationship("Product", back_populates="country")
+    # products = relationship("Product", back_populates="country")
 
 
 class Partner(Base):
@@ -122,9 +135,8 @@ class Partner(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(VARCHAR(255), nullable=False)
 
-    segments = relationship(
-        "Segment", secondary=PartnerSegment, back_populates="partners"  # backref="Partner",
-    )
+    # personal_offers = relationship("Offer")
+    # segments = relationship("Segment", secondary=PartnerSegment, back_populates="partners")
 
 
 class User(Base):
@@ -138,10 +150,10 @@ class User(Base):
     username = Column(VARCHAR(24), unique=True)
     email = Column(VARCHAR(128), unique=True)
     password = Column(VARCHAR(256))
-    activated = Column(SmallInteger(), default=0)
+    activated = Column(Boolean(), default=False)
 
-    personal_offers = relationship("Offer")
-    tokens = relationship("Token")
+    # tokens = relationship("Token")
+    # favourites = relationship("User", secondary=ProductFavourite, back_populates="products")
 
 
 class Offer(Base):
@@ -151,17 +163,18 @@ class Offer(Base):
 
     id = Column(Integer(), primary_key=True)
     product_id = Column(VARCHAR(36), ForeignKey("products.id", ondelete="CASCADE"), nullable=False)
-    user_id = Column(Integer(), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    partner_id = Column(Integer(), ForeignKey("partners.id", ondelete="CASCADE"), nullable=False)
     price = Column(Numeric(15, 6), nullable=True, default=None)
     quantity = Column(Integer(), nullable=True, default=None)
+    need_update = Column(Boolean(), nullable=True, default=True)
     updated = Column(
         DateTime(timezone=True),
         server_default=func.now(),
         onupdate=func.now(),
     )
 
-    product = relationship("Product", back_populates="offers")
-    user = relationship("User", back_populates="personal_offers")
+    # product = relationship("Product", back_populates="offers")
+    # partner = relationship("Partner", back_populates="personal_offers")
 
 
 class Token(Base):
@@ -176,4 +189,99 @@ class Token(Base):
     )
     token = Column(VARCHAR(256))
 
-    user = relationship("User", back_populates="tokens")
+    # user = relationship("User", back_populates="tokens")
+
+
+class Service(Base):
+    """Service modal"""
+
+    __tablename__ = "service"
+
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    enabled = Column(Boolean(), nullable=False, default=False)
+    log_days = Column(Integer(), nullable=False, default=30)
+
+
+class WorkStatus(enum.Enum):
+    """Work Status Enum"""
+
+    PROCESSING = "processing"
+    DONE = "done"
+
+
+class ServiceMethod(enum.Enum):
+    """Service Method Enum"""
+
+    GET_BRANDS = "get_brands"
+    GET_CATEGORIES = "get_categories"
+    GET_SEGMENTS = "get_segments"
+    GET_PRODUCTS = "get_products"
+    GET_PARTNERS = "get_partners"
+    GET_EMPLOYEES = "get_employees"
+    GET_PARTNERS_SEGMENTS = "get_partners_segments"
+    GET_PARTNERS_PRICES = "get_partners_prices"
+    POST_PARTNER_PRICES = "post_partner_prices"
+    GET_TASKS = "get_tasks"
+    POST_TASKS = "post_tasks"
+
+
+class ServiceEventLog(Base):
+    """Service Log Model"""
+
+    __tablename__ = "service_event_log"
+
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    created = Column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+    )
+    manual_mode = Column(Boolean(), nullable=False, default=False)
+    method = Column(Enum(ServiceMethod), nullable=False)
+    status = Column(Enum(WorkStatus), nullable=False, default=WorkStatus.PROCESSING)
+    parameters = Column(JSON(), nullable=True, default=None)
+
+
+class UserEvent(enum.Enum):
+    """User Request Enum"""
+
+    LOGIN = "login"
+    LOGOUT = "logout"
+    PASSWORD_RESET = "password_reset"
+    SAVE_OFFERS = "save_offers"
+    CREATE_TASK = "create_task"
+
+
+class UserEventLog(Base):
+    """User Log Model"""
+
+    __tablename__ = "users_event_log"
+
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    created = Column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+    )
+    event = Column(Enum(UserEvent), nullable=False)
+    partner_id = Column(Integer(), ForeignKey("partners.id", ondelete="CASCADE"), nullable=False)
+    user_id = Column(Integer(), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+
+    # partner = relationship("Partner")
+    # user = relationship("User")
+
+
+class OfferEventLog(Base):
+    """Offer Event Log"""
+
+    __tablename__ = "offers_event_log"
+
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    created = Column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+    )
+    partner_id = Column(Integer(), ForeignKey("partners.id", ondelete="CASCADE"), nullable=False)
+    article = Column(VARCHAR(50), nullable=True, default=None)
+    price = Column(Numeric(15, 6), nullable=True, default=None)
+    quantity = Column(Integer(), nullable=True, default=None)
+
+    # partner = relationship("Partner")

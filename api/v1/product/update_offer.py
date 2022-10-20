@@ -13,43 +13,31 @@ from src.schemas.product import Product_tag, UpdateDataOffer, UpdateOffer200
 from src.sql.connection import async_session
 from src.sql.models import Offer
 from src.utils import api
-
+from sqlalchemy.exc import IntegrityError
 
 async def async_update_product(filt, user_id):
     """Update/Insert products list func"""
     async with async_session() as session:
         session.begin()
+        result = await session.execute(
+            f"""SELECT partner_id FROM users WHERE users.id = {user_id}"""
+        )
+        for item in result:
+            partner_id = item.partner_id
         for filters in filt:
-            product_id = filters["product_id"]
-            try:
-                filters["price"] = float(filters["price"])
-            except:
-                filters["price"] = 0
-            try:
-                filters["quantity"] = float(filters["quantity"])
-            except:
-                filters["quantity"] = 0
-            if (
-                filters["price"] is None
-                or filters["price"] == ""
-                or filters["price"] == "None"
-            ):
-                filters["price"] = 0
-            if (
-                filters["quantity"] is None
-                or filters["quantity"] == ""
-                or filters["quantity"] == "None"
-            ):
-                filters["quantity"] = 0
+            product_id = str(filters["product_id"])
+            filters["price"] = float(filters["price"]) if filters["price"] and filters["price"] != "" else 0
+            filters["quantity"] = float(filters["quantity"]) if filters["quantity"] and filters["quantity"] != "" else 0
             if filters["price"] != 0 or filters["quantity"] != 0:
                 try:
                     upd = await session.execute(
                         f"""UPDATE offers SET price = {filters['price']},
-quantity = {filters['quantity']}
-WHERE offers.product_id = '{product_id}' AND user_id = {user_id}"""
+    quantity = {filters['quantity']}
+    WHERE offers.product_id = '{product_id}' AND offers.partner_id = {partner_id}"""
                     )
-                except Exception as exp:
-                    raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
+                except IntegrityError:
+                    raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге ",
+                                                   f"{product_id} отсутствует в прайс листе, невозможно выставить на него цену")
                 if upd.rowcount == 0:
                     try:
                         await session.execute(
@@ -57,11 +45,12 @@ WHERE offers.product_id = '{product_id}' AND user_id = {user_id}"""
                                 price=filters["price"],
                                 quantity=filters["quantity"],
                                 product_id=product_id,
-                                user_id=user_id,
+                                partner_id=partner_id,
                             )
                         )
-                    except Exception as exp:
-                        raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
+                    except IntegrityError:
+                        raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге ", f"{product_id} отсутствует в прайс листе, невозможно выставить на него цену")
+                    # raise falcon.HTTPNotAcceptable("Нет такого товара в каталоге")
                 await session.commit()
             else:
                 await session.execute(
