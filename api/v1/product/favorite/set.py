@@ -21,7 +21,7 @@ async def async_set_favorite(data, user_id):
     """Insert  favorite products func"""
     async with async_session() as session:
         result = await session.execute(
-            f"""SELECT count(*) FROM products_favourites WHERE products_favourites.id = {user_id} and products_favourites.product_id = {data["product_id"]}"""
+            f"""SELECT count(*) FROM products_favourites WHERE products_favourites.user_id = {user_id} and products_favourites.product_id = '{data["product_id"]}'"""
         )
         for item in result:
             count = item.count
