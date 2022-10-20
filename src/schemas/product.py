@@ -72,7 +72,7 @@ class GetDataProduct(BaseModel):
 
     segment_id: Optional[int] = None
     brands_id: Optional[int] = None
-    categories_id: Optional[int] = None
+    category_id: Optional[int] = None
     product_id: Optional[int] = None
 
     page_size: Optional[int] = None
