@@ -63,7 +63,7 @@ class Get:
     )
     async def on_post(self, req: Request, res: Response):
         """
-        Получение информации по магазинам на маркетплейсах
+        route's body
         """
         data = await req.get_media()
         logging.debug("Reached on_post() in Login")

@@ -44,7 +44,9 @@ class Login:
         tags=[Account_tag],
     )
     async def on_post(self, req: Request, res: Response):
-        """Login"""
+        """
+        route's body
+        """
         logging.debug("Reached on_post() in Login")
         data = await req.get_media()
         username = data["username"]

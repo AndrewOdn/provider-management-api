@@ -56,7 +56,7 @@ class Register:
     )
     async def on_post(self, req: Request, res: Response):
         """
-        Registration
+        route's body
         """
         if True:
             res.status = falcon.HTTP_INTERNAL_SERVER_ERROR

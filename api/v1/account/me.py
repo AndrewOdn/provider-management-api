@@ -32,7 +32,7 @@ class Me:
     )
     async def on_get(self, req: Request, res: Response):
         """
-        Получение информации по пользователю
+        route's body
 
         Deprecated
         """

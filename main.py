@@ -32,6 +32,10 @@ router = FalconRouter(
                     # "me": True,
                 },
                 "product": {
+                    "favorite":{
+                        "remove": True,
+                        "set": True,
+                    },
                     "get_products": True,
                     # "get_products_by_user": True,
                     "update_offer": True,

@@ -169,3 +169,23 @@ class UpdateDataOffer(BaseModel):
     """api/v1/product/update_offer request validation model"""
 
     __root__: List[UpdateDataOfferPart]
+
+
+class FavoriteRemoteData(BaseModel):
+    """api/v1/product/favourite/remove request validation model"""
+    product_id: str
+
+
+class FavoriteRemote200(BaseModel):
+    """api/v1/product/favourite/remove http200 response validation model"""
+    status: Union[bool, str]
+
+
+class FavoriteSetData(BaseModel):
+    """api/v1/product/favourite/set request validation model"""
+    product_id: str
+
+
+class FavoriteSet200(BaseModel):
+    """api/v1/product/favourite/set http200 response validation model"""
+    status: Union[bool, str]

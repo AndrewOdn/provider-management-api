@@ -36,7 +36,7 @@ class Refresh:
     )
     async def on_post(self, req: Request, res: Response):
         """
-        Refresh token
+        route's body
         """
         logging.debug("Reached on_post() in Refresh")
         data = await req.get_media()
