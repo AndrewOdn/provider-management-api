@@ -76,8 +76,8 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.partner_id 
                 if "segment_id" in filters:
                     query += prefix + f"segments.id = '{filters['segment_id']}'"
                     prefix = " AND "
-                if "brands_id" in filters:
-                    query += prefix + f"brands.id = '{filters['brands_id']}'"
+                if "brand_id" in filters:
+                    query += prefix + f"brands.id = '{filters['brand_id']}'"
                     prefix = " AND "
                 if "category_id" in filters:
                     query += prefix + f"categories.id= '{filters['category_id']}'"

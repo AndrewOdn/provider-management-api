@@ -71,7 +71,7 @@ class GetDataProduct(BaseModel):
     segment_name: Optional[str] = None
 
     segment_id: Optional[int] = None
-    brands_id: Optional[int] = None
+    brand_id: Optional[int] = None
     category_id: Optional[int] = None
     product_id: Optional[int] = None
 
