@@ -65,17 +65,18 @@ class GetDataProduct(BaseModel):
     offer_quantity_desc: Optional[int] = None
     offer_price_asc: Optional[float] = None
     offer_price_desc: Optional[float] = None
-    product_name: Optional[str] = None
-    product_barcode: Optional[str] = None
-    product_article: Optional[str] = None
-    brand_name: Optional[str] = None
-    category_name: Optional[str] = None
-    segment_name: Optional[str] = None
-
-    segment_id: Optional[int] = None
-    brand_id: Optional[int] = None
-    category_id: Optional[int] = None
-    product_id: Optional[int] = None
+    products_name: Optional[str] = None
+    products_barcode: Optional[str] = None
+    products_article: Optional[str] = None
+    brands_name: Optional[str] = None
+    categories_name: Optional[str] = None
+    segments_name: Optional[str] = None
+    search: Optional[str] = None
+    segments_id: Optional[int] = None
+    brands_id: Optional[int] = None
+    categories_id: Optional[int] = None
+    countries_id: Optional[str] = None
+    products_id: Optional[str] = None
 
     download_to_excel: Optional[bool] = None
     download_all: Optional[bool] = None

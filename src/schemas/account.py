@@ -46,17 +46,14 @@ class LoginData(BaseModel):
     )
 
 
-class MeData(BaseModel):
-    """api/v1/account/me request validation model"""
-    username: constr(
-        max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$"
-    )
-
-
 class Me200(BaseModel):
     """api/v1/account/me http200 response validation model"""
-    user: constr(max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$")
-
+    username: constr(max_length=24, min_length=6, regex=r"^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$")
+    id: int
+    rule_level: int
+    activated: bool
+    partner_id: int
+    email: str
 
 class RefreshData(BaseModel):
     """api/v1/account/refresh request validation model"""
