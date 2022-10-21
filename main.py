@@ -49,7 +49,7 @@ router = FalconRouter(
         CorsMiddleware(),
     ],
     cors_enable=True,
-    api=api,
+    # api=api,
 )
 
 if __name__ == "__main__":

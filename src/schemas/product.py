@@ -77,6 +77,9 @@ class GetDataProduct(BaseModel):
     category_id: Optional[int] = None
     product_id: Optional[int] = None
 
+    download_to_excel: Optional[bool] = None
+    download_all: Optional[bool] = None
+
     page_size: Optional[int] = None
     page: Optional[int] = None
 

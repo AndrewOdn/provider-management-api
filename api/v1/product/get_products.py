@@ -11,6 +11,7 @@ from src.schemas.base import Base401, Base500, BaseHeader
 from src.schemas.product import GetDataProduct, GetProduct200, Product_tag
 from src.sql.connection import async_session
 from src.utils import api
+# import openpyxl
 
 
 async def async_get_product(filters, user_id):
@@ -117,9 +118,6 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.partner_id 
                 output = {
                     # "username": item.username,
                     # "partner_name": item.partner_name,
-                    "segment": {"id": item.segment_id, "name": item.segment_name},
-                    "brand": {"id": item.brands_id, "name": item.brands_name},
-                    "category": {"id": item.categories_id, "name": item.categories_name},
                     "product": {
                         "id": item.product_id,
                         "article": item.product_article,
@@ -133,6 +131,9 @@ LEFT OUTER JOIN offers ON products.id = offers.product_id AND offers.partner_id 
                         "quantity": item.offer_quantity,
                         "updated": str(item.offer_updated) if item.offer_updated else None,
                     },
+                    "segment": {"id": item.segment_id, "name": item.segment_name},
+                    "brand": {"id": item.brands_id, "name": item.brands_name},
+                    "category": {"id": item.categories_id, "name": item.categories_name},
                     "country": {
                         "code": item.countries_code,
                         "emoji": item.countries_emoji,
@@ -167,6 +168,26 @@ class Get:
         data = await req.get_media()
         logging.debug("Reached on_post() in Login")
         out = await async_get_product(data, req.context.get("user_id"))
+        # if "download_to_excel" in data:
+        #     if data['download_to_excel']:
+        #         wb = openpyxl.Workbook()
+        #         sheet = wb.active
+        #         i = 1
+        #         for key1 in out['data'][0].keys():
+        #             for key2 in out['data'][0][key1].keys():
+        #                 sheet.cell(row=1, column=i).value = f'{key1}_{key2}'
+        #                 i += 1
+        #         j = 1
+        #         for item1 in out['data']:
+        #             i = 1
+        #             j += 1
+        #             for item2 in item1.values():
+        #                 for item3 in item2.values():
+        #                     sheet.cell(row=j, column=i).value = item3
+        #                     i += 1
+        #         wb.active.title = 'Предзаказ Яндекс'
+        #         wb.close()
+        #         wb.save("Предзаказ.xlsx")
         res.media = out
 
 
