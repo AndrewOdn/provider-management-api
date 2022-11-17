@@ -5,9 +5,9 @@ from src.utils import token_is_valid
 
 async def process_resource(request:Request):
     token = request.headers.raw
-    for golovka in token:
-        if golovka[0] == b'authorization':
-            token = str(golovka[1])[2:-1]
+    for head in token:
+        if head[0] == b'authorization':
+            token = str(head[1])[2:-1]
             break
     if not token:
         raise HTTPException(401,

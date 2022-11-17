@@ -1,0 +1,16 @@
+"""
+APIs configuration
+"""
+HOST = "localhost"
+PORT = 4015
+MONGO = "mongodb://ip_address:27017"
+ACCESS_SECRET = "Token"
+REFRESH_SECRET = "Token"
+TOKEN_NAME = "authorization"
+
+DB_HOST = "localhost"
+DB_PORT = 5432
+DB_NAME = "provider_api"
+DB_USER = "admin"
+DB_PASS = "2001"
+TIKEN_LIFE_IN_SECONDS = 1800000
